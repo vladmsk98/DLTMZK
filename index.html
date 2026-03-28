@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -6,27 +7,22 @@
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <div class="container">
-    <!-- Первый трек -->
-    <div class="track-item">
-      <img src="covers/АБСОЛЮТНОЕ НИЧЕГО.jpg"
-           alt="АБСОЛЮТНОЕ НИЧЕГО"
-           class="main-cover">
-      <audio controls>
-        <source src="audio/АБСОЛЮТНОЕ НИЧЕГО.mp3" type="audio/mpeg">
-      </audio>
-      <button class="share-audio-btn share-btn">Поделиться аудио</button>
+  <div class="container" id="tracks-container">
+    <!-- Блок для элементов фильтрации и сортировки -->
+    <div class="controls-section">
+      <input type="text" id="search-input" placeholder="Поиск по названию или артисту...">
+      <select id="sort-select">
+        <option value="">Сортировать по...</option>
+        <option value="title-asc">Названию (А-Я)</option>
+        <option value="title-desc">Названию (Я-А)</option>
+        <option value="artist-asc">Артисту (А-Я)</option>
+        <option value="artist-desc">Артисту (Я-А)</option>
+        <option value="duration-asc">Продолжительности (короткие первые)</option>
+        <option value="duration-desc">Продолжительности (долгие первые)</option>
+      </select>
     </div>
-    <!-- Второй трек -->
-    <div class="track-item">
-      <img src="covers/АБСОЛЮТНОЕ НИЧЕГО 2026.jpg"
-           alt="АБСОЛЮТНОЕ НИЧЕГО 2026"
-           class="main-cover">
-      <audio controls>
-        <source src="audio/АБСОЛЮТНОЕ НИЧЕГО 2026.mp3" type="audio/mpeg">
-      </audio>
-      <button class="share-audio-btn share-btn">Поделиться аудио</button>
-    </div>
+    <!-- Треки будут добавлены сюда динамически -->
+    <div id="tracks-list"></div>
   </div>
   <button class="toggle-theme" id="theme-toggle">Сменить тему</button>
     <div id="share-modal" class="share-modal">
@@ -35,7 +31,6 @@
         <div class="share-platforms">
           <button class="share-platform-btn" data-platform="vk">ВКонтакте</button>
           <button class="share-platform-btn" data-platform="ok">Одноклассники</button>
-          <button class="share-platform-btn" data-platform="telegram">Telegram</button>
           <button class="share-platform-btn" data-platform="bluesky">Bluesky</button>
           <button class="share-platform-btn copy-link-btn" data-platform="copy">Копировать ссылку</button>
         </div>
