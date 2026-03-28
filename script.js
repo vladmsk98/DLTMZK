@@ -100,7 +100,7 @@ const tracksData = [
   },
   {
     id: 3,
-    title: "...ИЛИ ОСТАВИТЬ ВСЁ",
+    title: "ИЛИ ОСТАВИТЬ ВСЁ",
     artist: "DLTMZK",
     duration: "3:29",
     coverSrc: "covers/ИЛИ ОСТАВИТЬ ВСЁ.jpg",
