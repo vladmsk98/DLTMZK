@@ -10,6 +10,11 @@
   --highlight-color: #ffff99;
   --modal-bg: rgba(0, 0, 0, 0.9);
   --modal-text: white;
+  --lyrics-bg: #f9f9f9; /* Цвет фона для текста песни */
+  --lyrics-border: #ccc; /* Цвет границы для текста песни */
+  --input-bg: #fff; /* Цвет фона для input/select */
+  --input-border: #ccc; /* Цвет границы для input/select */
+  --input-text: #000; /* Цвет текста для input/select */
 }
 
 [data-theme="dark"] {
@@ -23,6 +28,11 @@
   --highlight-color: #666;
   --modal-bg: rgba(0, 0, 0, 0.9);
   --modal-text: white;
+  --lyrics-bg: #2a2a2a; /* Темный цвет фона для текста песни */
+  --lyrics-border: #444; /* Темный цвет границы для текста песни */
+  --input-bg: #333; /* Темный цвет фона для input/select */
+  --input-border: #555; /* Темный цвет границы для input/select */
+  --input-text: #fff; /* Темный цвет текста для input/select */
 }
 
 /* === ОСНОВНЫЕ СТИЛИ === */
@@ -47,7 +57,32 @@ body {
   text-align: center;
 }
 
-/* === СТИЛИ ДЛЯ БЛОКА ТРЕКА === */
+/* === СТИЛИ ДЛЯ БЛОКА УПРАВЛЕНИЯ (поиск, сортировка) === */
+.controls-section {
+  margin-bottom: 20px; /* Отступ между блоком управления и треками */
+  display: flex;
+  flex-wrap: wrap; /* Разрешить перенос на новую строку на мобильных */
+  gap: 10px; /* Расстояние между элементами */
+  justify-content: center; /* Центрирование самих элементов */
+}
+
+#search-input, #sort-select {
+  padding: 8px 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  font-family: inherit; /* Наследовать шрифт */
+  font-size: 14px;
+  min-width: 200px; /* Минимальная ширина для удобства */
+}
+
+#search-input:focus, #sort-select:focus {
+  outline: none;
+  border-color: var(--border-color); /* Цвет границы при фокусе */
+}
+
+/* === СТИЛИ ДЛЯ БЛОКА ТРЕКОВ === */
 .track-item {
   margin-bottom: 30px; /* Отступ между треками */
 }
@@ -75,24 +110,98 @@ body {
   max-width: 100%;
 }
 
-/* === СТИЛИ ДЛЯ ЗАГОЛОВКОВ === */
-.project-title {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Соответствие основному шрифту */
-  font-size: 1.8em; /* Немного крупнее, чем обычный текст */
+/* === СТИЛИ ДЛЯ ИНФОРМАЦИИ О ТРЕКЕ === */
+.track-info {
+  margin-top: 15px;
+  text-align: center; /* Центрируем внутренние элементы */
+}
+
+.track-title {
+  margin: 0 0 5px 0; /* Отступ снизу для заголовка */
+  font-size: 1.4em; /* Размер шрифта заголовка */
   font-weight: bold;
-  color: var(--text-color); /* Использование переменной цвета темы */
-  margin: 10px 0 5px 0; /* Отступы сверху и снизу */
-  text-align: center; /* Центрирование */
+  color: var(--text-color);
+  text-align: center; /* Убедимся, что заголовок тоже центрирован */
+}
+
+.track-meta {
+  margin: 0 auto 10px auto; /* Автоматические внешние отступы по бокам для центрирования */
+  font-size: 0.9em; /* Размер шрифта метаданных */
+  color: var(--text-color);
+  opacity: 0.8; /* Менее насыщенный цвет */
+  display: inline-block; /* Позволяет центрироваться с margin: auto */
+  max-width: 100%; /* Ограничиваем ширину */
+}
+
+.show-lyrics-btn {
+  display: block; /* Делаем кнопку блочным элементом */
+  margin: 10px auto; /* Центрируем кнопку */
+  padding: 8px 16px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  /* Убираем display: inline-block */
+}
+
+.show-lyrics-btn:hover {
+  background: var(--button-text);
+  color: var(--button-bg);
+}
+
+.lyrics-container {
+  display: none; /* Скрыт по умолчанию */
+  background-color: var(--lyrics-bg);
+  border: 1px solid var(--lyrics-border);
+  border-radius: 6px;
+  padding: 15px;
+  margin: 10px auto; /* Центрируем контейнер с текстом */
+  overflow-x: auto; /* Горизонтальный скролл, если текст шире контейнера */
+  text-align: center; /* Центрируем содержимое, включая текст в <pre> */
+  max-width: 100%; /* Ограничиваем ширину */
+}
+
+.lyrics-container.visible {
+  display: block; /* Показывается при добавлении класса 'visible' */
+}
+
+.lyrics {
+  margin: 0; /* Убираем внешние отступы у pre */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Шрифт для текста песни */
+  font-size: 0.95em; /* Размер шрифта текста песни */
+  line-height: 1.5; /* Интервал между строками */
+  color: var(--text-color);
+  white-space: pre-wrap; /* Сохраняем переносы строк и пробелы */
+  word-break: break-word; /* Перенос слов при необходимости */
+  text-align: left; /* Оставляем текст слева, так как он внутри центрированного контейнера */
+  display: inline-block; /* Делаем <pre> инлайн-блочным, чтобы он "обнимал" свой контент и центрировался */
+  text-align: start; /* Сбрасываем возможрование текста внутри <pre>, используя начальное значение (обычно left) */
+  max-width: 100%; /* Убедимся, что <pre> не выходит за границы контейнера */
+}
+
+
+/* === СТИЛИ ДЛЯ ЗАГОЛОВКОВ (если используются вне track-info) === */
+.project-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 10px 0 5px 0;
+  text-align: center;
 }
 
 .project-subtitle {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Соответствие основному шрифту */
-  font-size: 1.2em; /* Меньше, чем h2 */
-  font-weight: normal; /* Обычный вес */
-  color: var(--text-color); /* Использование переменной цвета темы */
-  margin: 5px 0 10px 0; /* Отступы */
-  text-align: center; /* Центрирование */
-  opacity: 0.8; /* Чуть менее насыщенный */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.2em;
+  font-weight: normal;
+  color: var(--text-color);
+  margin: 5px 0 10px 0;
+  text-align: center;
+  opacity: 0.8;
 }
 
 /* === КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ === */
@@ -237,7 +346,8 @@ body {
 }
 
 .share-btn:hover {
-  background: var(--button-text var(--button-bg));
+  background: var(--button-text);
+  color: var(--button-bg);
 }
 
 /* Для мобильных — чуть меньше ширины */
