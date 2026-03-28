@@ -1,0 +1,47 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DLTMZK</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <!-- Первый трек -->
+    <div class="track-item">
+      <img src="covers/АБСОЛЮТНОЕ НИЧЕГО.jpg"
+           alt="АБСОЛЮТНОЕ НИЧЕГО"
+           class="main-cover">
+      <audio controls>
+        <source src="audio/АБСОЛЮТНОЕ НИЧЕГО.mp3" type="audio/mpeg">
+      </audio>
+      <button class="share-audio-btn share-btn">Поделиться аудио</button>
+    </div>
+    <!-- Второй трек -->
+    <div class="track-item">
+      <img src="covers/АБСОЛЮТНОЕ НИЧЕГО 2026.jpg"
+           alt="АБСОЛЮТНОЕ НИЧЕГО 2026"
+           class="main-cover">
+      <audio controls>
+        <source src="audio/АБСОЛЮТНОЕ НИЧЕГО 2026.mp3" type="audio/mpeg">
+      </audio>
+      <button class="share-audio-btn share-btn">Поделиться аудио</button>
+    </div>
+  </div>
+  <button class="toggle-theme" id="theme-toggle">Сменить тему</button>
+    <div id="share-modal" class="share-modal">
+      <div class="share-modal-content">
+        <h3>Поделиться аудио</h3>
+        <div class="share-platforms">
+          <button class="share-platform-btn" data-platform="vk">ВКонтакте</button>
+          <button class="share-platform-btn" data-platform="ok">Одноклассники</button>
+          <button class="share-platform-btn" data-platform="telegram">Telegram</button>
+          <button class="share-platform-btn" data-platform="bluesky">Bluesky</button>
+          <button class="share-platform-btn copy-link-btn" data-platform="copy">Копировать ссылку</button>
+        </div>
+        <button id="close-share-modal" class="close-modal-btn">Закрыть</button>
+      </div>
+    </div>
+  <script src="script.js"></script>
+</body>
+</html>
