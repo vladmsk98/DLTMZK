@@ -103,8 +103,8 @@ const tracksData = [
     title: "...ИЛИ ОСТАВИТЬ ВСЁ",
     artist: "DLTMZK",
     duration: "3:29",
-    coverSrc: "covers/...ИЛИ ОСТАВИТЬ ВСЁ.jpg",
-    audioSrc: "audio/...ИЛИ ОСТАВИТЬ ВСЁ.mp3",
+    coverSrc: "covers/ИЛИ ОСТАВИТЬ ВСЁ.jpg",
+    audioSrc: "audio/ИЛИ ОСТАВИТЬ ВСЁ.mp3",
     lyrics: `
     [Куплет]
     Чашка кофе остыла
