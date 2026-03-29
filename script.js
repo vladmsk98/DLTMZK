@@ -5,7 +5,7 @@ const tracksData = [
   {
     id: 1,
     title: "АБСОЛЮТНОЕ НИЧЕГО",
-    artist: "КРИСТАЛГАЙЗ",
+    artist: "DLTMZK",
     duration: "2:11",
     year: 2025,
     tags: ["меланхолия", "тревожность", "рэпкор", "фальшь"],
@@ -59,7 +59,7 @@ const tracksData = [
   {
     id: 2,
     title: "АБСОЛЮТНОЕ НИЧЕГО 2026",
-    artist: "КРИСТАЛГАЙЗ",
+    artist: "DLTMZK",
     duration: "3:06",
     year: 2026,
     tags: ["рэпкор", "фальшь", "переиздание", "электроника"],
@@ -113,7 +113,7 @@ const tracksData = [
   {
     id: 3,
     title: "ИЛИ ОСТАВИТЬ ВСЁ",
-    artist: "КРИСТАЛГАЙЗ",
+    artist: "DLTMZK",
     duration: "3:28",
     year: 2026,
     tags: ["меланхолия", "вдохновение", "кофе", "творческий выбор"],
