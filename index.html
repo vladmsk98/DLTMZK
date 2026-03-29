@@ -3,20 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DLTMZK</title>
+  <title>КРИСТАЛГАЙЗ</title>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+  <header class="banner-section">
+    <!-- Баннер -->
+    <p><img src="image/BANNER.jpg" alt="BANNER"></p>
+  </header>
   <div class="container" id="tracks-container">
-    <!-- Блок для элементов фильтрации и сортировки -->
+    <!-- Блок для фильтров по тегам и году -->
+    <div class="filters-section">
+      <div id="tag-filters"></div>
+      <div id="year-filter"></div>
+    </div>
+    <!-- Блок для элементов поиска и сортировки -->
     <div class="controls-section">
-      <input type="text" id="search-input" placeholder="Поиск по названию или артисту...">
+      <input type="text" id="search-input" placeholder="Поиск по названию...">
       <select id="sort-select">
         <option value="">Сортировать по...</option>
         <option value="title-asc">Названию (А-Я)</option>
         <option value="title-desc">Названию (Я-А)</option>
-        <option value="artist-asc">Артисту (А-Я)</option>
-        <option value="artist-desc">Артисту (Я-А)</option>
+        <option value="year-asc">Году (старые первые)</option>
+        <option value="year-desc">Году (новые первые)</option>
         <option value="duration-asc">Продолжительности (короткие первые)</option>
         <option value="duration-desc">Продолжительности (долгие первые)</option>
       </select>
