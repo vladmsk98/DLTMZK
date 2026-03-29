@@ -10,11 +10,13 @@
   --highlight-color: #ffff99;
   --modal-bg: rgba(0, 0, 0, 0.9);
   --modal-text: white;
-  --lyrics-bg: #f9f9f9; /* Цвет фона для текста песни */
-  --lyrics-border: #ccc; /* Цвет границы для текста песни */
+  --lyrics-bg: #f9f9f9; /* Цвет фона для текста песни и истории */
+  --lyrics-border: #ccc; /* Цвет границы для текста песни и истории */
   --input-bg: #fff; /* Цвет фона для input/select */
   --input-border: #ccc; /* Цвет границы для input/select */
   --input-text: #000; /* Цвет текста для input/select */
+  --filter-label-bg: #e0e0e0; /* Цвет фона для label фильтров */
+  --filter-label-hover: #d0d0d0; /* Цвет фона для label фильтров при наведении */
 }
 
 [data-theme="dark"] {
@@ -28,11 +30,13 @@
   --highlight-color: #666;
   --modal-bg: rgba(0, 0, 0, 0.9);
   --modal-text: white;
-  --lyrics-bg: #2a2a2a; /* Темный цвет фона для текста песни */
-  --lyrics-border: #444; /* Темный цвет границы для текста песни */
+  --lyrics-bg: #2a2a2a; /* Темный цвет фона для текста песни и истории */
+  --lyrics-border: #444; /* Темный цвет границы для текста песни и истории */
   --input-bg: #333; /* Темный цвет фона для input/select */
   --input-border: #555; /* Темный цвет границы для input/select */
   --input-text: #fff; /* Темный цвет текста для input/select */
+  --filter-label-bg: #3a3a3a; /* Темный цвет фона для label фильтров */
+  --filter-label-hover: #4a4a4a; /* Темный цвет фона для label фильтров при наведении */
 }
 
 /* === ОСНОВНЫЕ СТИЛИ === */
@@ -45,6 +49,33 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* === СТИЛИ ДЛЯ БАННЕРА === */
+.banner-section {
+  width: 100%;
+  max-width: 800px; /* Соответствует ширине .container */
+  margin: 0 auto 20px; /* Отступ снизу перед .container */
+  /* Добавляем стили для центрирования */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Убираем внутренние отступы, если они были */
+  padding: 0;
+}
+
+/* Стили для <p>, содержащего изображение баннера */
+.banner-section p {
+  margin: 0; /* Убираем стандартные внешние отступы у <p> */
+  padding: 0; /* Убираем внутренние отступы у <p> */
+}
+
+/* Стили для изображения баннера */
+.banner-section img {
+  max-width: 100%; /* Изображение не выходит за ширину контейнера */
+  height: auto;    /* Сохраняет пропорции изображения */
+  display: block;  /* Убирает возможные строчные пробелы снизу */
+}
+
+/* === СТИЛИ ДЛЯ ОСНОВНОГО КОНТЕЙНЕРА === */
 .container {
   max-width: 800px;
   margin: auto;
@@ -55,6 +86,53 @@ body {
   color: var(--text-color);
   border: 1px solid var(--border-color);
   text-align: center;
+}
+
+/* === СТИЛИ ДЛЯ БЛОКА ФИЛЬТРОВ (теги, год) === */
+.filters-section {
+  margin-bottom: 15px; /* Отступ между фильтрами и остальными элементами управления */
+  display: flex;
+  flex-direction: column; /* Столбец для тегов и года */
+  align-items: center; /* Центрирование по горизонтали */
+  gap: 10px; /* Расстояние между блоками тегов и года */
+}
+
+#tag-filters, #year-filter {
+  display: flex;
+  flex-wrap: wrap; /* Перенос на новую строку */
+  justify-content: center; /* Центрирование чекбоксов */
+  gap: 5px; /* Расстояние между чекбоксами */
+}
+
+.tag-filter, .year-filter {
+  display: inline-flex; /* Используем flex для label */
+  align-items: center; /* Выравнивание по вертикали */
+}
+
+.tag-filter input[type="checkbox"],
+.year-filter input[type="radio"] {
+  margin-right: 4px; /* Отступ справа от чекбокса */
+}
+
+.tag-filter label,
+.year-filter label {
+  padding: 2px 8px;
+  background-color: var(--filter-label-bg);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+}
+
+.tag-filter input[type="checkbox"]:checked + label,
+.year-filter input[type="radio"]:checked + label {
+  background-color: var(--border-color); /* Цвет при выборе */
+  color: var(--container-bg);
+}
+
+.tag-filter label:hover,
+.year-filter label:hover {
+  background-color: var(--filter-label-hover); /* Цвет при наведении */
 }
 
 /* === СТИЛИ ДЛЯ БЛОКА УПРАВЛЕНИЯ (поиск, сортировка) === */
@@ -104,10 +182,38 @@ body {
   border: 1px solid var(--border-color);
 }
 
-/* === СТИЛИ ДЛЯ АУДИО === */
-.track-item audio {
+/* === СТИЛИ ДЛЯ АУДИО И КНОПКИ СКАЧИВАНИЯ === */
+.track-audio-controls {
+  display: flex;
+  flex-direction: column; /* Столбец для аудио и кнопки */
+  align-items: center; /* Центрирование */
+  gap: 10px; /* Отступ между элементами */
   margin: 15px 0;
   max-width: 100%;
+}
+
+.track-audio-controls audio {
+  width: 100%; /* На всю ширину контейнера */
+  max-width: 100%;
+}
+
+.download-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none; /* Убираем подчеркивание у ссылки */
+  display: inline-block; /* Чтобы padding работал */
+}
+
+.download-btn:hover {
+  background: var(--button-text);
+  color: var(--button-bg);
 }
 
 /* === СТИЛИ ДЛЯ ИНФОРМАЦИИ О ТРЕКЕ === */
@@ -133,7 +239,8 @@ body {
   max-width: 100%; /* Ограничиваем ширину */
 }
 
-.show-lyrics-btn {
+.show-lyrics-btn,
+.show-history-btn { /* Объединённый селектор для стилей кнопок */
   display: block; /* Делаем кнопку блочным элементом */
   margin: 10px auto; /* Центрируем кнопку */
   padding: 8px 16px;
@@ -148,41 +255,43 @@ body {
   /* Убираем display: inline-block */
 }
 
-.show-lyrics-btn:hover {
+.show-lyrics-btn:hover,
+.show-history-btn:hover { /* Объединённый селектор для hover */
   background: var(--button-text);
   color: var(--button-bg);
 }
 
-.lyrics-container {
-  display: none; /* Скрыт по умолчанию */
-  background-color: var(--lyrics-bg);
-  border: 1px solid var(--lyrics-border);
+.lyrics-container,
+.history-container { /* Объединённый селектор для контейнеров */
+  display: none; /* Скрыты по умолчанию */
+  background-color: var(--lyrics-bg); /* Используем тот же цвет фона, что и для текста */
+  border: 1px solid var(--lyrics-border); /* И ту же границу */
   border-radius: 6px;
   padding: 15px;
-  margin: 10px auto; /* Центрируем контейнер с текстом */
+  margin: 10px auto; /* Центрируем контейнер */
   overflow-x: auto; /* Горизонтальный скролл, если текст шире контейнера */
-  text-align: center; /* Центрируем содержимое, включая текст в <pre> */
+  text-align: center; /* Центрируем содержимое */
   max-width: 100%; /* Ограничиваем ширину */
 }
 
-.lyrics-container.visible {
-  display: block; /* Показывается при добавлении класса 'visible' */
+.lyrics-container.visible,
+.history-container.visible { /* Объединённый селектор для видимости */
+  display: block; /* Показываются при добавлении класса 'visible' */
 }
 
-.lyrics {
-  margin: 0; /* Убираем внешние отступы у pre */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Шрифт для текста песни */
-  font-size: 0.95em; /* Размер шрифта текста песни */
+.lyrics,
+.history { /* Объединённый селектор для текста */
+  margin: 0; /* Убираем внешние отступы */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Шрифт */
+  font-size: 0.95em; /* Размер шрифта */
   line-height: 1.5; /* Интервал между строками */
   color: var(--text-color);
-  white-space: pre-wrap; /* Сохраняем переносы строк и пробелы */
   word-break: break-word; /* Перенос слов при необходимости */
   text-align: left; /* Оставляем текст слева, так как он внутри центрированного контейнера */
-  display: inline-block; /* Делаем <pre> инлайн-блочным, чтобы он "обнимал" свой контент и центрировался */
-  text-align: start; /* Сбрасываем возможрование текста внутри <pre>, используя начальное значение (обычно left) */
-  max-width: 100%; /* Убедимся, что <pre> не выходит за границы контейнера */
+  display: inline-block; /* Делаем инлайн-блочным, чтобы "обнимать" контент */
+  max-width: 100%; /* Ограничиваем ширину */
+  /* white-space: pre-wrap; для .lyrics не используется */
 }
-
 
 /* === СТИЛИ ДЛЯ ЗАГОЛОВКОВ (если используются вне track-info) === */
 .project-title {
