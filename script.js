@@ -5,145 +5,149 @@ const tracksData = [
   {
     id: 1,
     title: "АБСОЛЮТНОЕ НИЧЕГО",
-    artist: "DLTMZK",
+    artist: "КРИСТАЛГАЙЗ",
     duration: "2:11",
+    year: 2025,
+    tags: ["меланхолия", "тревожность", "рэпкор", "фальшь"],
     coverSrc: "covers/АБСОЛЮТНОЕ НИЧЕГО.jpg",
     audioSrc: "audio/АБСОЛЮТНОЕ НИЧЕГО.mp3",
     lyrics: `
-    [Куплет]
-    Абсолютное Ничего — мой новый стиль,
-    Застрял между «был» и «не было сил»,
-    Шесть месяцев в этой пустоте,
-    Строчки мои как в туманной мгле,
-    Ответов поиск в кофейной гуще,
-    Мысли мои растворялись в луже,
-    Кризис — не гость, въелся в потолок,
-    Словно чёрный снег валит без дорог.
+    <div class="lyrics-content">
+    <p><strong>[Куплет]</strong></p>
+    <p>Абсолютное Ничего — мой новый стиль,</p>
+    <p>Застрял между «был» и «не было сил»,</p>
+    <p>Шесть месяцев в этой пустоте,</p>
+    <p>Строчки мои как в туманной мгле,</p>
+    <p>Ответов поиск в кофейной гуще,</p>
+    <p>Мысли мои растворялись в луже,</p>
+    <p>Кризис — не гость, въелся в потолок,</p>
+    <p>Словно чёрный снег валит без дорог.</p>
 
-    [Припев]
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь.
+    <p><strong>[Припев]</strong></p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь.</p>
 
-    [Припев]
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь.
+    <p><strong>[Припев]</strong></p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь.</p>
 
-    [Куплет]
-    Абсолютное Ничего — мой новый стиль,
-    Застрял между «был» и «не было сил»,
-    Шесть месяцев в этой пустоте,
-    Строчки мои как в туманной мгле,
-    Ответов поиск в кофейной гуще,
-    Мысли мои растворялись в луже,
-    Кризис — не гость, въелся в потолок,
-    Словно чёрный снег валит без дорог.`
+    <p><strong>[Куплет]</strong></p>
+    <p>Абсолютное Ничего — мой новый стиль,</p>
+    <p>Застрял между «был» и «не было сил»,</p>
+    <p>Шесть месяцев в этой пустоте,</p>
+    <p>Строчки мои как в туманной мгле,</p>
+    <p>Ответов поиск в кофейной гуще,</p>
+    <p>Мысли мои растворялись в луже,</p>
+    <p>Кризис — не гость, въелся в потолок,</p>
+    <p>Словно чёрный снег валит без дорог.</p>
+    </div>`,
+    history: `<p><strong>История создания "АБСОЛЮТНОЕ НИЧЕГО":</strong></p>
+    <p>Этот трек был написан в апреле 2025 года как результат шести месяцев эмоциональной пустоты и творческого кризиса. Многократное повторение припева подчеркивает разочарование от поисков себя, которое приводит к осознанию окружающей "творческой фальши".</p>`
   },
   {
     id: 2,
     title: "АБСОЛЮТНОЕ НИЧЕГО 2026",
-    artist: "DLTMZK",
+    artist: "КРИСТАЛГАЙЗ",
     duration: "3:06",
+    year: 2026,
+    tags: ["рэпкор", "фальшь", "переиздание", "электроника"],
     coverSrc: "covers/АБСОЛЮТНОЕ НИЧЕГО 2026.jpg",
     audioSrc: "audio/АБСОЛЮТНОЕ НИЧЕГО 2026.mp3",
     lyrics: `
-    [Куплет]
-    Абсолютное Ничего — мой новый стиль,
-    Застрял между «был» и «не было сил»,
-    Шесть месяцев в этой пустоте,
-    Строчки мои как в туманной мгле,
-    Ответов поиск в кофейной гуще,
-    Мысли мои растворялись в луже,
-    Кризис — не гость, въелся в потолок,
-    Словно чёрный снег валит без дорог.
+    <div class="lyrics-content">
+    <p><strong>[Куплет]</strong></p>
+    <p>Абсолютное Ничего — мой новый стиль,</p>
+    <p>Застрял между «был» и «не было сил»,</p>
+    <p>Шесть месяцев в этой пустоте,</p>
+    <p>Строчки мои как в туманной мгле,</p>
+    <p>Ответов поиск в кофейной гуще,</p>
+    <p>Мысли мои растворялись в луже,</p>
+    <p>Кризис — не гость, въелся в потолок,</p>
+    <p>Словно чёрный снег валит без дорог.</p>
 
-    [Припев]
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь.
+    <p><strong>[Припев]</strong></p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь.</p>
 
-    [Припев]
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь,
-    Искал себя, нашёл лишь фальшь.
+    <p><strong>[Припев]</strong></p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь фальшь,</p>
+    <p>Искал себя, нашёл лишь,</p>
+    <p>Искал себя, нашёл лишь фальшь.</p>
 
-    [Куплет]
-    Абсолютное Ничего — мой новый стиль,
-    Застрял между «был» и «не было сил»,
-    Шесть месяцев в этой пустоте,
-    Строчки мои как в туманной мгле,
-    Ответов поиск в кофейной гуще,
-    Мысли мои растворялись в луже,
-    Кризис — не гость, въелся в потолок,
-    Словно чёрный снег валит без дорог.`
+    <p><strong>[Куплет]</strong></p>
+    <p>Абсолютное Ничего — мой новый стиль,</p>
+    <p>Застрял между «был» и «не было сил»,</p>
+    <p>Шесть месяцев в этой пустоте,</p>
+    <p>Строчки мои как в туманной мгле,</p>
+    <p>Ответов поиск в кофейной гуще,</p>
+    <p>Мысли мои растворялись в луже,</p>
+    <p>Кризис — не гость, въелся в потолок,</p>
+    <p>Словно чёрный снег валит без дорог.</p>
+    </div>`,
+    history: `<p><strong>История создания "АБСОЛЮТНОЕ НИЧЕГО 2026":</strong></p>
+    <p>Перевыпуск оригинальной композиции в обновлённом звуке. Текст остался без изменений для его большего раскрытия в стиле электронного рэпкора.</p>`
   },
   {
     id: 3,
     title: "ИЛИ ОСТАВИТЬ ВСЁ",
-    artist: "DLTMZK",
-    duration: "3:29",
+    artist: "КРИСТАЛГАЙЗ",
+    duration: "3:28",
+    year: 2026,
+    tags: ["меланхолия", "вдохновение", "кофе", "творческий выбор"],
     coverSrc: "covers/ИЛИ ОСТАВИТЬ ВСЁ.jpg",
     audioSrc: "audio/ИЛИ ОСТАВИТЬ ВСЁ.mp3",
-    lyrics: `
-    [Куплет]
-    Чашка кофе остыла
-    И всё вокруг застыло
-    В голове
-    Как в туманной мгле
-    
-    [Куплет]
-    Нет идей
-    Или чего-то ещё
-    Стереть черновики
-    Или оставить всё
-    
-    [Припев]
-    Или оставить всё
-    Или оставить всё
-    Или оставить всё
-    Или оставить всё
-    
-    [Припев]
-    Или оставить всё
-    Или оставить всё
-    Или оставить всё
-    Или оставить всё`
+    lyrics: `<div class="lyrics-content"><p>Чашка кофе остыла<br>
+    И всё вокруг застыло<br>
+    В голове<br>
+    Как в туманной мгле<br>
+    Нет идей<br>
+    Или чего-то ещё<br>
+    Стереть черновики<br>
+    Или оставить всё</p></div>`,
+    history: `<p><strong>История создания "ИЛИ ОСТАВИТЬ ВСЁ":</strong></p>
+    <p>Этот трек возник в момент творческого выбора: продолжить писать песни или отказаться от своих несовершенных идей. Таким образом даже так получилось создать что-то новое, ведь вдохновение пришло, пусть и "чашка кофе остыла".</p>`
   }
 ];
 
 // --- Глобальные переменные ---
 let currentTrackIdForSharing = null; // ID трека, который вызвал модальное окно
 let filteredAndSortedTracks = [...tracksData]; // Изначально отображаем все треки
+let selectedTags = []; // Выбранные теги
+let selectedYear = null; // Выбранный год
 
 // --- DOM Elements ---
 const themeToggle = document.getElementById('theme-toggle');
 const shareModal = document.getElementById('share-modal');
 const closeShareModal = document.getElementById('close-share-modal');
 const sharePlatformButtons = document.querySelectorAll('.share-platform-btn');
-const tracksListContainer = document.getElementById('tracks-list'); // Обновлённый ID контейнера
+const tracksListContainer = document.getElementById('tracks-list');
 const searchInput = document.getElementById('search-input');
 const sortSelect = document.getElementById('sort-select');
+const tagFiltersContainer = document.getElementById('tag-filters');
+const yearFilterContainer = document.getElementById('year-filter');
 
 // --- Функции ---
 
@@ -165,30 +169,129 @@ function parseDuration(durationStr) {
   return minutes * 60 + seconds;
 }
 
-function filterTracks(query) {
+function getUniqueTags() {
+  const allTags = tracksData.flatMap(track => track.tags);
+  return [...new Set(allTags)].sort(); // Уникальные, отсортированные
+}
+
+function createTagFilters() {
+  const uniqueTags = getUniqueTags();
+  tagFiltersContainer.innerHTML = ''; // Очистить контейнер
+
+  uniqueTags.forEach(tag => {
+    const div = document.createElement('div');
+    div.className = 'tag-filter';
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = `tag-${tag}`;
+    checkbox.value = tag;
+
+    const label = document.createElement('label');
+    label.htmlFor = `tag-${tag}`;
+    label.textContent = tag;
+
+    checkbox.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        selectedTags.push(tag);
+      } else {
+        selectedTags = selectedTags.filter(t => t !== tag);
+      }
+      updateTrackDisplay(); // Обновить при изменении
+    });
+
+    div.appendChild(checkbox);
+    div.appendChild(label);
+    tagFiltersContainer.appendChild(div);
+  });
+}
+
+function getUniqueYears() {
+  const allYears = tracksData.map(track => track.year);
+  return [...new Set(allYears)].sort((a, b) => a - b); // Уникальные, отсортированные
+}
+
+function createYearFilter() {
+  const uniqueYears = getUniqueYears();
+  yearFilterContainer.innerHTML = ''; // Очистить контейнер
+
+  if (uniqueYears.length === 0) return;
+
+  const labelAll = document.createElement('label');
+  labelAll.className = 'year-filter';
+  const radioAll = document.createElement('input');
+  radioAll.type = 'radio';
+  radioAll.name = 'year-filter';
+  radioAll.id = 'year-all';
+  radioAll.value = 'all';
+  radioAll.checked = true; // По умолчанию "все"
+
+  radioAll.addEventListener('change', () => {
+    selectedYear = null;
+    updateTrackDisplay(); // Обновить при изменении
+  });
+
+  labelAll.appendChild(radioAll);
+  const spanAll = document.createElement('span');
+  spanAll.textContent = 'Все годы';
+  labelAll.appendChild(spanAll);
+  yearFilterContainer.appendChild(labelAll);
+
+  uniqueYears.forEach(year => {
+    const label = document.createElement('label');
+    label.className = 'year-filter';
+
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = 'year-filter';
+    radio.id = `year-${year}`;
+    radio.value = year;
+
+    radio.addEventListener('change', (e) => {
+      if (e.target.value === 'all') {
+        selectedYear = null;
+      } else {
+        selectedYear = parseInt(e.target.value, 10);
+      }
+      updateTrackDisplay(); // Обновить при изменении
+    });
+
+    label.appendChild(radio);
+    const span = document.createElement('span');
+    span.textContent = year;
+    label.appendChild(span);
+    yearFilterContainer.appendChild(label);
+  });
+}
+
+
+function filterTracks(query, selectedTags, selectedYear) {
   query = query.toLowerCase().trim();
-  if (!query) {
-    return [...tracksData]; // Возвращаем копию исходного массива, если запрос пуст
-  }
-  return tracksData.filter(track =>
-    track.title.toLowerCase().includes(query) ||
-    track.artist.toLowerCase().includes(query)
-  );
+  return tracksData.filter(track => {
+    const matchesQuery = !query || track.title.toLowerCase().includes(query) || track.artist.toLowerCase().includes(query);
+    const matchesTags = selectedTags.length === 0 || selectedTags.every(tag => track.tags.includes(tag));
+    const matchesYear = selectedYear === null || track.year === selectedYear;
+
+    return matchesQuery && matchesTags && matchesYear;
+  });
 }
 
 function sortTracks(tracksToSort, sortValue) {
   if (!sortValue) {
-    return tracksToSort; // Не сортируем, если не выбрано
+    return tracksToSort;
   }
 
   const [key, order] = sortValue.split('-');
-  const sorted = [...tracksToSort]; // Создаём копию массива для сортировки
+  const sorted = [...tracksToSort];
 
   sorted.sort((a, b) => {
     let aValue, bValue;
     if (key === 'duration') {
       aValue = parseDuration(a[key]);
       bValue = parseDuration(b[key]);
+    } else if (key === 'year') {
+      aValue = a[key];
+      bValue = b[key];
     } else {
       aValue = a[key];
       bValue = b[key];
@@ -208,11 +311,10 @@ function sortTracks(tracksToSort, sortValue) {
 }
 
 function renderTracks(tracksToRender) {
-  tracksListContainer.innerHTML = ''; // Очищаем контейнер
+  tracksListContainer.innerHTML = '';
   tracksToRender.forEach(track => {
     const trackElement = generateTrackElement(track);
     tracksListContainer.appendChild(trackElement);
-    // Привязываем обработчики к элементам только что созданного трека
     attachEventListenersToTrack(trackElement, track.id);
   });
 }
@@ -221,7 +323,7 @@ function updateTrackDisplay() {
   const query = searchInput.value;
   const sortValue = sortSelect.value;
 
-  let filtered = filterTracks(query);
+  let filtered = filterTracks(query, selectedTags, selectedYear);
   let sorted = sortTracks(filtered, sortValue);
 
   filteredAndSortedTracks = sorted;
@@ -234,16 +336,23 @@ function generateTrackElement(track) {
 
   trackItem.innerHTML = `
     <img src="${track.coverSrc}" alt="${track.title}" class="main-cover">
-    <audio controls>
-      <source src="${track.audioSrc}" type="audio/mpeg">
-    </audio>
+    <div class="track-audio-controls">
+      <audio controls>
+        <source src="${track.audioSrc}" type="audio/mpeg">
+      </audio>
+      <a href="${track.audioSrc}" download="${track.title}.mp3" class="download-btn">Скачать трек</a>
+    </div>
     <button class="share-audio-btn share-btn">Поделиться аудио</button>
     <div class="track-info">
       <h3 class="track-title">${track.title}</h3>
-      <p class="track-meta">Артист: ${track.artist} | Продолжительность: ${track.duration}</p>
+      <p class="track-meta">Артист: ${track.artist} | Продолжительность: ${track.duration} | Год: ${track.year}</p>
       <button class="show-lyrics-btn">Показать текст</button>
       <div class="lyrics-container">
-        <pre class="lyrics">${track.lyrics}</pre>
+        <div class="lyrics">${track.lyrics}</div> <!-- Теперь div с HTML -->
+      </div>
+      <button class="show-history-btn">Показать историю создания</button>
+      <div class="history-container">
+        <div class="history">${track.history}</div> <!-- Теперь div с HTML -->
       </div>
     </div>
   `;
@@ -257,10 +366,10 @@ function attachEventListenersToTrack(trackItem, trackId) {
   const shareBtn = trackItem.querySelector('.share-audio-btn');
   const lyricsContainer = trackItem.querySelector('.lyrics-container');
   const showLyricsBtn = trackItem.querySelector('.show-lyrics-btn');
+  const historyContainer = trackItem.querySelector('.history-container');
+  const showHistoryBtn = trackItem.querySelector('.show-history-btn');
 
-  // --- Воспроизведение/пауза по клику на обложку ---
   cover.addEventListener('click', () => {
-    // Сначала поставим на паузу все другие аудио
     document.querySelectorAll('audio').forEach(otherAudio => {
       if (otherAudio !== audio && !otherAudio.paused) {
         otherAudio.pause();
@@ -274,26 +383,28 @@ function attachEventListenersToTrack(trackItem, trackId) {
     }
   });
 
-  // --- Открытие модального окна шаринга для конкретного трека ---
   shareBtn.addEventListener('click', () => {
-    // Сохраняем ID трека, который вызвал шаринг
     currentTrackIdForSharing = trackId;
-    // Модальное окно само возьмет нужную информацию из данных при открытии
     shareModal.classList.add('open');
     document.body.style.overflow = 'hidden';
   });
 
-  // --- Показ/скрытие текста песни ---
   if (showLyricsBtn && lyricsContainer) {
     showLyricsBtn.addEventListener('click', () => {
       lyricsContainer.classList.toggle('visible');
       showLyricsBtn.textContent = lyricsContainer.classList.contains('visible') ? 'Скрыть текст' : 'Показать текст';
     });
   }
+
+  if (showHistoryBtn && historyContainer) {
+    showHistoryBtn.addEventListener('click', () => {
+      historyContainer.classList.toggle('visible');
+      showHistoryBtn.textContent = historyContainer.classList.contains('visible') ? 'Скрыть историю' : 'Показать историю создания';
+    });
+  }
 }
 
 function handleSharing(platform) {
-  // Находим данные текущего трека по ID
   const currentTrack = tracksData.find(t => t.id === currentTrackIdForSharing);
   if (!currentTrack) {
     console.error("Трек для шаринга не найден!");
@@ -301,7 +412,6 @@ function handleSharing(platform) {
   }
 
   const url = encodeURIComponent(window.location.href);
-  // Используем название текущего трека
   const title = encodeURIComponent(currentTrack.title + " by " + currentTrack.artist);
   let link = '';
 
@@ -318,7 +428,6 @@ function handleSharing(platform) {
     case 'copy':
       navigator.clipboard.writeText(window.location.href)
         .then(() => {
-          // Обновляем текст кнопки "Копировать ссылку"
           const copyBtn = document.querySelector('.copy-link-btn');
           if (copyBtn) {
               copyBtn.textContent = '✓';
@@ -333,7 +442,7 @@ function handleSharing(platform) {
               setTimeout(() => copyBtn.textContent = 'Копировать ссылку', 1200);
           }
         });
-      return; // Выходим, чтобы не закрывать модальное окно для копирования
+      return;
     default:
       return;
   }
@@ -343,15 +452,10 @@ function handleSharing(platform) {
   }
   shareModal.classList.remove('open');
   document.body.style.overflow = '';
-  // Сбрасываем ID после использования
   currentTrackIdForSharing = null;
 }
 
-
-// --- Инициализация при загрузке DOM ---
 document.addEventListener('DOMContentLoaded', () => {
-
-  // --- Тема ---
   const savedTheme = localStorage.getItem('preferredTheme');
   if (savedTheme) {
     document.body.setAttribute('data-theme', savedTheme);
@@ -366,30 +470,31 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => themeToggle.classList.remove('active'), 800);
   });
 
+  // --- Инициализация фильтров ---
+  createTagFilters();
+  createYearFilter();
+
   // --- Инициализация отображения треков ---
-  renderTracks(tracksData); // Изначально отображаем все треки
+  renderTracks(tracksData);
 
   // --- Фильтрация и сортировка ---
-  const debouncedUpdate = debounce(updateTrackDisplay, 300); // 300ms задержка для поиска
+  const debouncedUpdate = debounce(updateTrackDisplay, 300);
   searchInput.addEventListener('input', debouncedUpdate);
   sortSelect.addEventListener('change', updateTrackDisplay);
-
-  // --- Модальное окно «Поделиться аудио» ---
-  closeShareModal.addEventListener('click', () => {
-    shareModal.classList.remove('open');
-    document.body.style.overflow = '';
-    currentTrack = null; // Сброс ID при закрытии
-  });
 
   shareModal.addEventListener('click', (e) => {
     if (e.target === shareModal) {
       shareModal.classList.remove('open');
       document.body.style.overflow = '';
-      currentTrackIdForSharing = null; // Сброс ID при закрытии кликом вне
+      currentTrackIdForSharing = null;
     }
   });
 
-  // --- Поделиться на платформу ---
+  closeShareModal.addEventListener('click', () => {
+    shareModal.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+
   sharePlatformButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const platform = btn.dataset.platform;
