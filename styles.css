@@ -1,3 +1,39 @@
+/* === ПЕРЕМЕННЫЕ CSS ДЛЯ ЦВЕТОВЫХ ТЕМ === */
+:root {
+  /* Светлая тема (по умолчанию) */
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --container-bg: white;
+  --border-color: #ddd;
+  --button-bg: #007bff;
+  --button-text: white;
+  --button-hover-bg: #0056b3;
+  --lyrics-bg: #f9f9f9;
+  --lyrics-border: #ddd;
+  --download-btn-bg: #28a745;
+  --download-btn-hover-bg: #218838;
+  --cover-shadow: rgba(0, 0, 0, 0.1);
+  --container-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Тёмная тема */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --container-bg: #1e1e1e;
+  --border-color: #444;
+  --button-bg: #0d6efd;
+  --button-text: white;
+  --button-hover-bg: #0b5ed7;
+  --lyrics-bg: #2a2a2a;
+  --lyrics-border: #444;
+  --download-btn-bg: #1e7e34;
+  --download-btn-hover-bg: #155724;
+  --cover-shadow: rgba(0, 0, 0, 0.3);
+  --container-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* === ОСНОВНЫЕ СТИЛИ === */
 * {
   margin: 0;
   padding: 0;
@@ -5,44 +41,94 @@
 }
 
 body {
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   padding: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход */
+}
+
+/* === СТИЛИ ДЛЯ КНОПКИ СМЕНЫ ТЕМЫ === */
+.theme-toggle-btn {
+  position: fixed; /* Фиксированное положение */
+  top: 10px;
+  right: 10px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: Consolas, monospace;
+  font-size: 0.9em;
+  z-index: 1000; /* Поверх других элементов */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход */
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--button-hover-bg);
+}
+
+/* === СТИЛИ ДЛЯ КНОПКИ "ПОДЕЛИТЬСЯ" === */
+.share-btn {
+  position: fixed;
+  top: 10px;
+  right: 120px; /* Отступ от правого края, чтобы не налезала на кнопку темы */
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: Consolas, monospace;
+  font-size: 0.9em;
+  z-index: 1000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.share-btn:hover {
+  background-color: var(--button-hover-bg);
 }
 
 .container {
   max-width: 600px;
   margin: 0 auto;
-  background: white;
+  background: var(--container-bg);
   padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  /* Ключевое изменение: центрирование всех элементов */
+  box-shadow: 0 4px 10px var(--container-shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; /* Универсальный отступ между элементами */
+  gap: 20px;
+  border: 1px solid var(--border-color); /* Добавлена граница для контраста */
 }
 
 .cover {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--cover-shadow);
+  cursor: pointer; /* Добавляем курсор указателя */
+  transition: transform 0.1s ease; /* Плавный переход для эффекта нажатия */
+}
+
+.cover:active {
+  transform: scale(0.98); /* Эффект нажатия */
 }
 
 h1 {
   font-size: 1.8em;
-  color: #222;
-  margin: 0; /* Убираем стандартный отступ h1 */
+  color: var(--text-color);
+  margin: 0;
 }
 
 .track-meta {
-  color: #666;
+  color: var(--text-color);
   font-size: 0.9em;
-  text-align: center; /* На случай, если ширина будет меньше */
-  margin: 0; /* Убираем стандартный отступ */
+  text-align: center;
+  margin: 0;
+  opacity: 0.8; /* Slightly less opaque */
 }
 
 .audio-player {
@@ -50,24 +136,41 @@ h1 {
   max-width: 400px;
 }
 
-#show-lyrics-btn {
-  background: #007bff;
+.download-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--download-btn-bg);
   color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.download-btn:hover {
+  background-color: var(--download-btn-hover-bg);
+}
+
+#show-lyrics-btn {
+  background: var(--button-bg);
+  color: var(--button-text);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+  transition: background-color 0.2s ease; /* Плавный переход */
 }
 
 #show-lyrics-btn:hover {
-  background: #0056b3;
+  background: var(--button-hover-bg);
 }
 
 .lyrics-container {
   display: none;
-  background: #f9f9f9;
-  border: 1px solid #ddd;
+  background: var(--lyrics-bg);
+  border: 1px solid var(--lyrics-border);
   border-radius: 8px;
   padding: 20px;
   text-align: left;
@@ -78,4 +181,5 @@ h1 {
 .lyrics p {
   margin: 0.5em 0;
   line-height: 1.5;
+  color: var(--text-color); /* Убедимся, что текст в lyrics использует переменную */
 }
