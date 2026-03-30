@@ -4,7 +4,10 @@ const audioPlayer = document.getElementById('audio-player');
 const showLyricsBtn = document.getElementById('show-lyrics-btn');
 const lyricsContainer = document.getElementById('lyrics-container');
 const themeToggleBtn = document.getElementById('theme-toggle');
-const shareBtn = document.getElementById('share-btn'); // Новая кнопка
+const shareBtn = document.getElementById('share-btn');
+const shareModal = document.getElementById('share-modal'); // Новое модальное окно
+const closeShareModal = document.getElementById('close-share-modal'); // Кнопка закрытия модального окна
+const sharePlatformButtons = document.querySelectorAll('.share-platform-btn'); // Кнопки платформ
 const coverImage = document.querySelector('.cover');
 
 // --- Логика для темы ---
@@ -44,12 +47,11 @@ showLyricsBtn.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const savedLyricsState = localStorage.getItem('lyricsVisible');
-  if (savedLyricsState === 'true') {
+  const savedLyricsState = localStorage.getItem('lyricsVisible');  if (savedLyricsState === 'true') {
     lyricsContainer.style.display = 'block';
     showLyricsBtn.textContent = 'Скрыть текст';
   } else {
-    lyricsContainer.style.display = 'none';
+    lyricsContainer.style = 'none';
     showLyricsBtn.textContent = 'Показать текст';
   }
 });
@@ -63,35 +65,50 @@ coverImage.addEventListener('click', () => {
   }
 });
 
-// --- Логика для кнопки "Поделиться" ---
-shareBtn.addEventListener('click', async () => {
-  const shareData = {
-    title: 'MADEBYAI',
-    text: 'Послушай трек MADEBYAI (JAZZ BOOM BAP)',
-    url: window.location.href,
-  };
+// --- Логика для кнопки "Поделиться" (открытие модального окна) ---
+shareBtn.addEventListener('click', () => {
+  shareModal.classList.add('open');
+  document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
+});
 
-  try {
-    // Проверяем, поддерживается ли Web Share API
-    if (navigator.share) {
-      await navigator.share(shareData);
-    } else {
-      // Fallback: копируем ссылку в буфер обмена
-      await navigator.clipboard.writeText(shareData.url);
-      alert('Ссылка скопирована в буфер обмена!');
-    }
-  } catch (err) {
-    console.error('Ошибка при попытке поделиться:', err);
-    // Если Web Share отклонён пользователем, просто копируем
-    if (err.name !== 'AbortError') {
-       try {
-         await navigator.clipboard.writeText(shareData.url);
-         alert('Ссылка скопирована в буфер обмена!');
-       } catch (clipErr) {
-         console.error('Ошибка при копировании ссылки:', clipErr);
-         // Если и копирование не удалось, открываем VK Share
-         window.open(`https://vk.com/share.php?url=${encodeURIComponent(shareData.url)}&title=${encodeURIComponent(shareData.title)}`, '_blank');
-       }
-    }
+// --- Логика для модального окна "Поделиться" ---
+closeShareModal.addEventListener('click', () => {
+  shareModal.classList.remove('open');
+  document.body.style.overflow = ''; // Восстанавливаем прокрутку фона
+});
+
+// Закрытие модального окна при клике вне его содержимого
+shareModal.addEventListener('click', (e) => {
+  if (e.target === shareModal) {
+    shareModal.classList.remove('open');
+    document.body.style.overflow = '';
   }
+});
+
+// --- Логика для кнопок платформ в модальном окне ---
+sharePlatformButtons.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); // Предотвращаем стандартное поведение ссылки
+    const platform = btn.dataset.platform;
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent('Послушай трек MADEBYAI (JAZZ BOOM BAP)');
+    let link = '';
+
+    switch (platform) {
+      case 'vk':
+        link = `https://vk.com/share.php?url=${url}&title=${title}`;        break;
+      case 'ok':
+        link = `https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl=${url}&st.title=${title}`;
+        break;
+      case 'bluesky':
+        // Bluesky использует intent, title может не передаваться напрямую
+        link = `https://bsky.app/intent/compose?text=${title}%20${url}`;
+        break;
+      default:
+        return;
+    }
+
+    // Открываем сгенерированную ссылку в новой вкладке
+    window.open(link, '_blank', 'noopener,noreferrer');
+  });
 });
