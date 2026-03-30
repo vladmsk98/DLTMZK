@@ -1,469 +1,81 @@
-/* === ПЕРЕМЕННЫЕ CSS ДЛЯ ЦВЕТОВЫХ ТЕМ === */
-:root {
-  /* Светлая тема (по умолчанию) */
-  --bg-color: white;
-  --text-color: black;
-  --container-bg: white;
-  --border-color: black;
-  --button-bg: white;
-  --button-text: black;
-  --highlight-color: #ffff99;
-  --modal-bg: rgba(0, 0, 0, 0.9);
-  --modal-text: white;
-  --lyrics-bg: #f9f9f9; /* Цвет фона для текста песни и истории */
-  --lyrics-border: #ccc; /* Цвет границы для текста песни и истории */
-  --input-bg: #fff; /* Цвет фона для input/select */
-  --input-border: #ccc; /* Цвет границы для input/select */
-  --input-text: #000; /* Цвет текста для input/select */
-  --filter-label-bg: #e0e0e0; /* Цвет фона для label фильтров */
-  --filter-label-hover: #d0d0d0; /* Цвет фона для label фильтров при наведении */
-}
-
-[data-theme="dark"] {
-  /* Тёмная тема */
-  --bg-color: black;
-  --text-color: white;
-  --container-bg: #222;
-  --border-color: white;
-  --button-bg: #222;
-  --button-text: white;
-  --highlight-color: #666;
-  --modal-bg: rgba(0, 0, 0, 0.9);
-  --modal-text: white;
-  --lyrics-bg: #2a2a2a; /* Темный цвет фона для текста песни и истории */
-  --lyrics-border: #444; /* Темный цвет границы для текста песни и истории */
-  --input-bg: #333; /* Темный цвет фона для input/select */
-  --input-border: #555; /* Темный цвет границы для input/select */
-  --input-text: #fff; /* Темный цвет текста для input/select */
-  --filter-label-bg: #3a3a3a; /* Темный цвет фона для label фильтров */
-  --filter-label-hover: #4a4a4a; /* Темный цвет фона для label фильтров при наведении */
-}
-
-/* === ОСНОВНЫЕ СТИЛИ === */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+* {
   margin: 0;
-  padding: 10px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* === СТИЛИ ДЛЯ БАННЕРА === */
-.banner-section {
-  width: 100%;
-  max-width: 800px; /* Соответствует ширине .container */
-  margin: 0 auto 20px; /* Отступ снизу перед .container */
-  /* Добавляем стили для центрирования */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* Убираем внутренние отступы, если они были */
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* Стили для <p>, содержащего изображение баннера */
-.banner-section p {
-  margin: 0; /* Убираем стандартные внешние отступы у <p> */
-  padding: 0; /* Убираем внутренние отступы у <p> */
-}
-
-/* Стили для изображения баннера */
-.banner-section img {
-  max-width: 100%; /* Изображение не выходит за ширину контейнера */
-  height: auto;    /* Сохраняет пропорции изображения */
-  display: block;  /* Убирает возможные строчные пробелы снизу */
-}
-
-/* === СТИЛИ ДЛЯ ОСНОВНОГО КОНТЕЙНЕРА === */
-.container {
-  max-width: 800px;
-  margin: auto;
-  background: var(--container-bg);
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 25px;
   border-radius: 10px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-  color: var(--text-color);
-  border: 1px solid var(--border-color);
-  text-align: center;
-}
-
-/* === СТИЛИ ДЛЯ БЛОКА ФИЛЬТРОВ (теги, год) === */
-.filters-section {
-  margin-bottom: 15px; /* Отступ между фильтрами и остальными элементами управления */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Ключевое изменение: центрирование всех элементов */
   display: flex;
-  flex-direction: column; /* Столбец для тегов и года */
-  align-items: center; /* Центрирование по горизонтали */
-  gap: 10px; /* Расстояние между блоками тегов и года */
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Универсальный отступ между элементами */
 }
 
-#tag-filters, #year-filter {
-  display: flex;
-  flex-wrap: wrap; /* Перенос на новую строку */
-  justify-content: center; /* Центрирование чекбоксов */
-  gap: 5px; /* Расстояние между чекбоксами */
-}
-
-.tag-filter, .year-filter {
-  display: inline-flex; /* Используем flex для label */
-  align-items: center; /* Выравнивание по вертикали */
-}
-
-.tag-filter input[type="checkbox"],
-.year-filter input[type="radio"] {
-  margin-right: 4px; /* Отступ справа от чекбокса */
-}
-
-.tag-filter label,
-.year-filter label {
-  padding: 2px 8px;
-  background-color: var(--filter-label-bg);
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
-  transition: background-color 0.2s;
-}
-
-.tag-filter input[type="checkbox"]:checked + label,
-.year-filter input[type="radio"]:checked + label {
-  background-color: var(--border-color); /* Цвет при выборе */
-  color: var(--container-bg);
-}
-
-.tag-filter label:hover,
-.year-filter label:hover {
-  background-color: var(--filter-label-hover); /* Цвет при наведении */
-}
-
-/* === СТИЛИ ДЛЯ БЛОКА УПРАВЛЕНИЯ (поиск, сортировка) === */
-.controls-section {
-  margin-bottom: 20px; /* Отступ между блоком управления и треками */
-  display: flex;
-  flex-wrap: wrap; /* Разрешить перенос на новую строку на мобильных */
-  gap: 10px; /* Расстояние между элементами */
-  justify-content: center; /* Центрирование самих элементов */
-}
-
-#search-input, #sort-select {
-  padding: 8px 12px;
-  border: 1px solid var(--input-border);
-  border-radius: 4px;
-  background-color: var(--input-bg);
-  color: var(--input-text);
-  font-family: inherit; /* Наследовать шрифт */
-  font-size: 14px;
-  min-width: 200px; /* Минимальная ширина для удобства */
-}
-
-#search-input:focus, #sort-select:focus {
-  outline: none;
-  border-color: var(--border-color); /* Цвет границы при фокусе */
-}
-
-/* === СТИЛИ ДЛЯ БЛОКА ТРЕКОВ === */
-.track-item {
-  margin-bottom: 30px; /* Отступ между треками */
-}
-.track-item:last-child {
-  margin-bottom: 0; /* Убираем отступ у последнего трека */
-}
-
-/* === СТИЛИ ДЛЯ ОБЛОЖКИ === */
-.main-cover {
+.cover {
   max-width: 100%;
   height: auto;
-  max-height: 70vh;
-  width: auto;
-  object-fit: contain;
   border-radius: 8px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
-  margin: 0 auto 15px;
-  display: block;
-  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* === СТИЛИ ДЛЯ АУДИО И КНОПКИ СКАЧИВАНИЯ === */
-.track-audio-controls {
-  display: flex;
-  flex-direction: column; /* Столбец для аудио и кнопки */
-  align-items: center; /* Центрирование */
-  gap: 10px; /* Отступ между элементами */
-  margin: 15px 0;
-  max-width: 100%;
-}
-
-.track-audio-controls audio {
-  width: 100%; /* На всю ширину контейнера */
-  max-width: 100%;
-}
-
-.download-btn {
-  padding: 5px 10px;
-  font-size: 12px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--button-bg);
-  color: var(--button-text);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  text-decoration: none; /* Убираем подчеркивание у ссылки */
-  display: inline-block; /* Чтобы padding работал */
-}
-
-.download-btn:hover {
-  background: var(--button-text);
-  color: var(--button-bg);
-}
-
-/* === СТИЛИ ДЛЯ ИНФОРМАЦИИ О ТРЕКЕ === */
-.track-info {
-  margin-top: 15px;
-  text-align: center; /* Центрируем внутренние элементы */
-}
-
-.track-title {
-  margin: 0 0 5px 0; /* Отступ снизу для заголовка */
-  font-size: 1.4em; /* Размер шрифта заголовка */
-  font-weight: bold;
-  color: var(--text-color);
-  text-align: center; /* Убедимся, что заголовок тоже центрирован */
+h1 {
+  font-size: 1.8em;
+  color: #222;
+  margin: 0; /* Убираем стандартный отступ h1 */
 }
 
 .track-meta {
-  margin: 0 auto 10px auto; /* Автоматические внешние отступы по бокам для центрирования */
-  font-size: 0.9em; /* Размер шрифта метаданных */
-  color: var(--text-color);
-  opacity: 0.8; /* Менее насыщенный цвет */
-  display: inline-block; /* Позволяет центрироваться с margin: auto */
-  max-width: 100%; /* Ограничиваем ширину */
+  color: #666;
+  font-size: 0.9em;
+  text-align: center; /* На случай, если ширина будет меньше */
+  margin: 0; /* Убираем стандартный отступ */
 }
 
-.show-lyrics-btn,
-.show-history-btn { /* Объединённый селектор для стилей кнопок */
-  display: block; /* Делаем кнопку блочным элементом */
-  margin: 10px auto; /* Центрируем кнопку */
-  padding: 8px 16px;
-  font-size: 14px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--button-bg);
-  color: var(--button-text);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  /* Убираем display: inline-block */
-}
-
-.show-lyrics-btn:hover,
-.show-history-btn:hover { /* Объединённый селектор для hover */
-  background: var(--button-text);
-  color: var(--button-bg);
-}
-
-.lyrics-container,
-.history-container { /* Объединённый селектор для контейнеров */
-  display: none; /* Скрыты по умолчанию */
-  background-color: var(--lyrics-bg); /* Используем тот же цвет фона, что и для текста */
-  border: 1px solid var(--lyrics-border); /* И ту же границу */
-  border-radius: 6px;
-  padding: 15px;
-  margin: 10px auto; /* Центрируем контейнер */
-  overflow-x: auto; /* Горизонтальный скролл, если текст шире контейнера */
-  text-align: center; /* Центрируем содержимое */
-  max-width: 100%; /* Ограничиваем ширину */
-}
-
-.lyrics-container.visible,
-.history-container.visible { /* Объединённый селектор для видимости */
-  display: block; /* Показываются при добавлении класса 'visible' */
-}
-
-.lyrics,
-.history { /* Объединённый селектор для текста */
-  margin: 0; /* Убираем внешние отступы */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Шрифт */
-  font-size: 0.95em; /* Размер шрифта */
-  line-height: 1.5; /* Интервал между строками */
-  color: var(--text-color);
-  word-break: break-word; /* Перенос слов при необходимости */
-  text-align: left; /* Оставляем текст слева, так как он внутри центрированного контейнера */
-  display: inline-block; /* Делаем инлайн-блочным, чтобы "обнимать" контент */
-  max-width: 100%; /* Ограничиваем ширину */
-  /* white-space: pre-wrap; для .lyrics не используется */
-}
-
-/* === СТИЛИ ДЛЯ ЗАГОЛОВКОВ (если используются вне track-info) === */
-.project-title {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 1.8em;
-  font-weight: bold;
-  color: var(--text-color);
-  margin: 10px 0 5px 0;
-  text-align: center;
-}
-
-.project-subtitle {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 1.2em;
-  font-weight: normal;
-  color: var(--text-color);
-  margin: 5px 0 10px 0;
-  text-align: center;
-  opacity: 0.8;
-}
-
-/* === КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ === */
-.toggle-theme {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: var(--button-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-family: Consolas, monospace;
-  color: var(--button-text);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  z-index: 1000;
-}
-
-/* === КНОПКА КОПИРОВАНИЯ ССЫЛКИ (внутри модального окна) === */
-.copy-link-btn { /* Переименован селектор */
-  background: transparent;
-  border: none;
-  font-size: 1.2em;
-  color: var(--text-color);
-  cursor: pointer;
-  margin: 8px 5px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.copy-link-btn:hover {
-  background: rgba(0,0,0,0.05);
-}
-
-/* === МОДАЛЬНОЕ ОКНО ПОДЕЛИТЬСЯ === */
-.share-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
+.audio-player {
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.share-modal.open {
-  opacity: 1;
-  visibility: visible;
-  display: flex;
-}
-
-.share-modal-content {
-  background: var(--container-bg);
-  padding: 24px;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   max-width: 400px;
-  width: 90%;
-  text-align: center;
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
 }
 
-.share-modal-content h3 {
-  margin-top: 0;
-  font-size: 1.4em;
-  font-weight: bold;
-}
-
-.share-platforms {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 20px 0;
-}
-
-.share-platform-btn {
-  padding: 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  background: var(--button-bg);
-  color: var(--button-text);
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.2s ease;
-}
-
-.share-platform-btn:hover {
-  background: var(--button-text);
-  color: var(--button-bg);
-}
-
-.close-modal-btn {
-  margin-top: 16px;
+#show-lyrics-btn {
+  background: #007bff;
+  color: white;
+  border: none;
   padding: 10px 20px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  background: var(--button-bg);
-  color: var(--button-text);
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
-  transition: background 0.2s;
+  font-size: 1rem;
 }
 
-.close-modal-btn:hover {
-  background: var(--button-text);
-  color: var(--button-bg);
+#show-lyrics-btn:hover {
+  background: #0056b3;
 }
 
-/* === ЭФФЕКТ НАЖАТИЯ НА ОБЛОЖКУ === */
-.main-cover {
-  cursor: pointer;
+.lyrics-container {
+  display: none;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: left;
+  width: 100%;
+  max-width: 600px;
 }
 
-.main-cover:active {
-  transform: scale(0.98);
-  transition: transform 0.1s ease;
-}
-
-/* === КНОПКА "ПОДЕЛИТЬСЯ АУДИО" — ПОД АУДИО, ПО ЦЕНТРУ === */
-.share-btn { /* Обновлен селектор */
-  display: block;
-  margin: 16px auto; /* отступ сверху и снизу, центрирование */
-  padding: 10px 24px;
-  font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--button-bg);
-  color: var(--button-text);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-  max-width: 280px;
-  width: calc(100% - 40px); /* чуть меньше ширины контейнера */
-}
-
-.share-btn:hover {
-  background: var(--button-text);
-  color: var(--button-bg);
-}
-
-/* Для мобильных — чуть меньше ширины */
-@media (max-width: 480px) {
-  .share-btn {
-    padding: 8px 20px;
-    font-size: 15px;
-    width: calc(100% - 30px);
-  }
+.lyrics p {
+  margin: 0.5em 0;
+  line-height: 1.5;
 }
