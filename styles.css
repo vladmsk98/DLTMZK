@@ -31,7 +31,7 @@
   --border-color: #444;
   --button-bg: #0d6efd;
   --button-text: white;
-  --button-hover-bg: #0b5ed7;
+  --button-hover-bg:ed7;
   --lyrics-bg: #2a2a2a;
   --lyrics-border: #444;
   --download-btn-bg: #1e7e34;
@@ -47,7 +47,8 @@
   --share-platform-hover-bg: #3a3a3a; /* Тёмный цвет фона кнопки платформы при наведении */
 }
 
-/* === ОСНОВНЫЕ СТИЛИ === */* {
+/* === ОСНОВНЫЕ СТИЛИ === */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -82,21 +83,23 @@ body {
   background-color: var(--button-hover-bg);
 }
 
-/* === СТИЛИ ДЛЯ КНОПКИ "ПОДЕЛИТЬСЯ" === */
+/* === СТИЛИ ДЛЯ КНОПКИ "ПОДЕЛИТЬСЯ" (перемещённая) === */
 .share-btn {
-  position: fixed;
-  top: 10px;
-  right: 120px; /* Отступ от правого края, чтобы не налезала на кнопку темы */
+  /* Убрано position: fixed */
+  /* top: 10px;
+  right: 120px; */
   background-color: var(--button-bg);
   color: var(--button-text);
   border: 1px solid var(--border-color);
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 10px 20px; /* Увеличен padding для лучшего отображения */
   cursor: pointer;
   font-family: Consolas, monospace;
-  font-size: 0.9em;
-  z-index: 1000;
-  transition: background-color 0.3s ease, color 0.3s ease;}
+  font-size: 1em; /* Увеличен размер шрифта */
+  /* z-index: 1000; - Не нужно без position: fixed */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* align-self: center; - Можно добавить, чтобы центрировать внутри flex-контейнера .container */
+}
 
 .share-btn:hover {
   background-color: var(--button-hover-bg);
@@ -145,7 +148,8 @@ body {
 }
 
 .share-platforms {
-  display: flex;  flex-direction: column;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
   margin: 20px 0;
 }
@@ -194,7 +198,8 @@ body {
   box-shadow: 0 4px 10px var(--container-shadow);
   display: flex;
   flex-direction: column;
-  align-items: center;  gap: 20px;
+  align-items: center; /* Центрируем элементы по горизонтали */
+  gap: 20px; /* Универсальный отступ между элементами */
   border: 1px solid var(--border-color); /* Добавлена граница для контраста */
 }
 
@@ -221,8 +226,7 @@ h1 {
   color: var(--text-color);
   font-size: 0.9em;
   text-align: center;
-  margin: 0;
-  opacity: 0.8; /* Slightly less opaque */
+ opacity: 0.8; /* Slightly less opaque */
 }
 
 .audio-player {
@@ -243,7 +247,8 @@ h1 {
 }
 
 .download-btn:hover {
-  background-color: var(--download-btn-hover-bg);}
+  background-color: var(--download-btn-hover-bg);
+}
 
 #show-lyrics-btn {
   background: var(--button-bg);
