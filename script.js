@@ -5,9 +5,9 @@ const showLyricsBtn = document.getElementById('show-lyrics-btn');
 const lyricsContainer = document.getElementById('lyrics-container');
 const themeToggleBtn = document.getElementById('theme-toggle');
 const shareBtn = document.getElementById('share-btn');
-const shareModal = document.getElementById('share-modal'); // Новое модальное окно
-const closeShareModal = document.getElementById('close-share-modal'); // Кнопка закрытия модального окна
-const sharePlatformButtons = document.querySelectorAll('.share-platform-btn'); // Кнопки платформ
+const shareModal = document.getElementById('share-modal');
+const closeShareModal = document.getElementById('close-share-modal');
+const sharePlatformButtons = document.querySelectorAll('.share-platform-btn'); // Теперь только 2 кнопки
 const coverImage = document.querySelector('.cover');
 
 // --- Логика для темы ---
@@ -47,11 +47,12 @@ showLyricsBtn.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const savedLyricsState = localStorage.getItem('lyricsVisible');  if (savedLyricsState === 'true') {
+  const savedLyricsState = localStorage.getItem('lyricsVisible');
+  if (savedLyricsState === 'true') {
     lyricsContainer.style.display = 'block';
     showLyricsBtn.textContent = 'Скрыть текст';
   } else {
-    lyricsContainer.style = 'none';
+    lyricsContainer.style.display = 'none';
     showLyricsBtn.textContent = 'Показать текст';
   }
 });
@@ -68,16 +69,15 @@ coverImage.addEventListener('click', () => {
 // --- Логика для кнопки "Поделиться" (открытие модального окна) ---
 shareBtn.addEventListener('click', () => {
   shareModal.classList.add('open');
-  document.body.style.overflow = 'hidden'; // Блокируем прокрутку фона
+  document.body.style.overflow = 'hidden';
 });
 
 // --- Логика для модального окна "Поделиться" ---
 closeShareModal.addEventListener('click', () => {
   shareModal.classList.remove('open');
-  document.body.style.overflow = ''; // Восстанавливаем прокрутку фона
+  document.body.style.overflow = '';
 });
 
-// Закрытие модального окна при клике вне его содержимого
 shareModal.addEventListener('click', (e) => {
   if (e.target === shareModal) {
     shareModal.classList.remove('open');
@@ -88,27 +88,24 @@ shareModal.addEventListener('click', (e) => {
 // --- Логика для кнопок платформ в модальном окне ---
 sharePlatformButtons.forEach(btn => {
   btn.addEventListener('click', (e) => {
-    e.preventDefault(); // Предотвращаем стандартное поведение ссылки
-    const platform = btn.dataset.platform;
+    e.preventDefault();
+    const platform = btn.dataset.platform; // 'vk' или 'ok'
     const url = encodeURIComponent(window.location.href);
     const title = encodeURIComponent('Послушай трек MADEBYAI (JAZZ BOOM BAP)');
     let link = '';
 
     switch (platform) {
       case 'vk':
-        link = `https://vk.com/share.php?url=${url}&title=${title}`;        break;
+        link = `https://vk.com/share.php?url=${url}&title=${title}`;
+        break;
       case 'ok':
         link = `https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl=${url}&st.title=${title}`;
         break;
-      case 'bluesky':
-        // Bluesky использует intent, title может не передаваться напрямую
-        link = `https://bsky.app/intent/compose?text=${title}%20${url}`;
-        break;
+      // 'bluesky' удалена из HTML и из JS
       default:
         return;
     }
 
-    // Открываем сгенерированную ссылку в новой вкладке
     window.open(link, '_blank', 'noopener,noreferrer');
   });
 });
