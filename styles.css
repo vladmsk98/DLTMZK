@@ -21,6 +21,10 @@
   --modal-close-hover-bg: #f8f9fa; /* Цвет фона кнопки закрытия при наведении */
   --share-platform-bg: #f8f9fa; /* Цвет фона кнопки платформы */
   --share-platform-hover-bg: #e9ecef; /* Цвет фона кнопки платформы при наведении */
+  --copy-btn-bg: #e9ecef; /* Цвет фона кнопки копирования */
+  --copy-btn-hover-bg: #dee2e6; /* Цвет фона кнопки копирования при наведении */
+  --copy-btn-success-bg: #d4edda; /* Цвет фона кнопки копирования при успехе */
+  --copy-btn-success-text: #155724; /* Цвет текста кнопки копирования при успехе */
 }
 
 /* Тёмная тема */
@@ -31,7 +35,7 @@
   --border-color: #444;
   --button-bg: #0d6efd;
   --button-text: white;
-  --button-hover-bg:ed7;
+  --button-hover-bg: #0b5ed7;
   --lyrics-bg: #2a2a2a;
   --lyrics-border: #444;
   --download-btn-bg: #1e7e34;
@@ -45,6 +49,10 @@
   --modal-close-hover-bg: #333; /* Тёмный цвет фона кнопки закрытия при наведении */
   --share-platform-bg: #2a2a2a; /* Тёмный цвет фона кнопки платформы */
   --share-platform-hover-bg: #3a3a3a; /* Тёмный цвет фона кнопки платформы при наведении */
+  --copy-btn-bg: #343a40; /* Тёмный цвет фона кнопки копирования */
+  --copy-btn-hover-bg: #495057; /* Тёмный цвет фона кнопки копирования при наведении */
+  --copy-btn-success-bg: #1d3a26; /* Тёмный цвет фона кнопки копирования при успехе */
+  --copy-btn-success-text: #c3e6cb; /* Тёмный цвет текста кнопки копирования при успехе */
 }
 
 /* === ОСНОВНЫЕ СТИЛИ === */
@@ -59,12 +67,13 @@ body {
   color: var(--text-color);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   padding: 20px;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход */
+  /* Добавлена анимация для переключения темы */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* === СТИЛИ ДЛЯ КНОПКИ СМЕНЫ ТЕМЫ === */
 .theme-toggle-btn {
-  position: fixed; /* Фиксированное положение */
+  position: fixed;
   top: 10px;
   right: 10px;
   background-color: var(--button-bg);
@@ -75,34 +84,58 @@ body {
   cursor: pointer;
   font-family: Consolas, monospace;
   font-size: 0.9em;
-  z-index: 1000; /* Поверх других элементов */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Плавный переход */
+  z-index: 1000;
+  /* Добавлена анимация */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .theme-toggle-btn:hover {
   background-color: var(--button-hover-bg);
 }
 
-/* === СТИЛИ ДЛЯ КНОПКИ "ПОДЕЛИТЬСЯ" (перемещённая) === */
+/* === СТИЛИ ДЛЯ КНОПКИ "ПОДЕЛИТЬСЯ" === */
 .share-btn {
-  /* Убрано position: fixed */
-  /* top: 10px;
-  right: 120px; */
   background-color: var(--button-bg);
   color: var(--button-text);
   border: 1px solid var(--border-color);
   border-radius: 5px;
-  padding: 10px 20px; /* Увеличен padding для лучшего отображения */
+  padding: 10px 20px;
   cursor: pointer;
   font-family: Consolas, monospace;
-  font-size: 1em; /* Увеличен размер шрифта */
-  /* z-index: 1000; - Не нужно без position: fixed */
+  font-size: 1em;
+  /* Добавлена анимация */
   transition: background-color 0.3s ease, color 0.3s ease;
-  /* align-self: center; - Можно добавить, чтобы центрировать внутри flex-контейнера .container */
 }
 
 .share-btn:hover {
   background-color: var(--button-hover-bg);
+}
+
+/* === СТИЛИ ДЛЯ КНОПКИ "КОПИРОВАТЬ НАЗВАНИЕ" === */
+.copy-title-btn {
+  background-color: var(--copy-btn-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 1.2em;
+  /* Убираем outline при фокусе */
+  outline: none;
+  /* Добавлена анимация */
+  transition: background-color 0.2s ease, color 0.2s ease;
+  /* Отступ сверху и снизу */
+  margin: 8px 0;
+}
+
+.copy-title-btn:hover {
+  background-color: var(--copy-btn-hover-bg);
+}
+
+/* Стиль для успешного копирования */
+.copy-title-btn.success {
+  background-color: var(--copy-btn-success-bg);
+  color: var(--copy-btn-success-text);
 }
 
 /* === МОДАЛЬНОЕ ОКНО ПОДЕЛИТЬСЯ === */
@@ -113,19 +146,20 @@ body {
   width: 100%;
   height: 100%;
   background-color: var(--modal-bg);
-  display: none; /* Скрыто по умолчанию */
+  display: none;
   justify-content: center;
   align-items: center;
-  z-index: 2000; /* Выше других элементов */
+  z-index: 2000;
   opacity: 0;
   visibility: hidden;
+  /* Добавлена анимация */
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .share-modal.open {
   opacity: 1;
   visibility: visible;
-  display: flex; /* Отображается при добавлении класса 'open' */
+  display: flex;
 }
 
 .share-modal-content {
@@ -138,6 +172,13 @@ body {
   text-align: center;
   border: 1px solid var(--modal-border);
   color: var(--modal-text);
+  /* Добавлена анимация для появления */
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.share-modal.open .share-modal-content {
+  transform: scale(1);
 }
 
 .share-modal-content h3 {
@@ -162,15 +203,15 @@ body {
   color: var(--modal-text);
   cursor: pointer;
   font-size: 16px;
-  text-decoration: none; /* Убираем подчеркивание у ссылки */
+  text-decoration: none;
   transition: all 0.2s ease;
-  display: block; /* Чтобы padding и border работали как у кнопки */
+  display: block;
 }
 
 .share-platform-btn:hover {
   background: var(--share-platform-hover-bg);
-  color: var(--button-text); /* Цвет текста при наведении */
-  background-color: var(--button-bg); /* Цвет фона при наведении */
+  color: var(--button-text);
+  background-color: var(--button-bg);
 }
 
 .close-modal-btn {
@@ -190,7 +231,7 @@ body {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 600px; /* Или какое было изначальное значение */
   margin: 0 auto;
   background: var(--container-bg);
   padding: 25px;
@@ -198,9 +239,11 @@ body {
   box-shadow: 0 4px 10px var(--container-shadow);
   display: flex;
   flex-direction: column;
-  align-items: center; /* Центрируем элементы по горизонтали */
-  gap: 20px; /* Универсальный отступ между элементами */
-  border: 1px solid var(--border-color); /* Добавлена граница для контраста */
+  align-items: center;
+  gap: 20px;
+  border: 1px solid var(--border-color);
+  /* Добавлена анимация */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .cover {
@@ -208,30 +251,39 @@ body {
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px var(--cover-shadow);
-  cursor: pointer; /* Добавляем курсор указателя */
-  transition: transform 0.1s ease; /* Плавный переход для эффекта нажатия */
+  cursor: pointer;
+  /* Добавлена анимация */
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 .cover:active {
-  transform: scale(0.98); /* Эффект нажатия */
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px var(--cover-shadow); /* Лёгкая тень при нажатии */
 }
 
 h1 {
   font-size: 1.8em;
   color: var(--text-color);
   margin: 0;
+  /* Добавлена анимация */
+  transition: color 0.3s ease;
 }
 
 .track-meta {
   color: var(--text-color);
   font-size: 0.9em;
   text-align: center;
- opacity: 0.8; /* Slightly less opaque */
+  margin: 0;
+  opacity: 0.8;
+  /* Добавлена анимация */
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .audio-player {
   width: 100%;
   max-width: 400px;
+  /* Добавлена анимация */
+  transition: opacity 0.3s ease;
 }
 
 .download-btn {
@@ -243,6 +295,7 @@ h1 {
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
+  /* Добавлена анимация */
   transition: background-color 0.2s ease;
 }
 
@@ -258,7 +311,8 @@ h1 {
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.2s ease; /* Плавный переход */
+  /* Добавлена анимация */
+  transition: background-color 0.2s ease;
 }
 
 #show-lyrics-btn:hover {
@@ -274,10 +328,21 @@ h1 {
   text-align: left;
   width: 100%;
   max-width: 600px;
+  /* Добавлена анимация */
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.lyrics-container.visible { /* Класс для видимости */
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }
 
 .lyrics p {
   margin: 0.5em 0;
   line-height: 1.5;
-  color: var(--text-color); /* Убедимся, что текст в lyrics использует переменную */
+  color: var(--text-color);
 }
