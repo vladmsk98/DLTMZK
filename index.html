@@ -8,16 +8,24 @@
 </head>
 <body>
   <button id="theme-toggle" class="theme-toggle-btn">Сменить тему</button>
+
   <div class="container">
     <img src="covers/MADEBYAI (2000 RNB).jpg" alt="MADEBYAI (2000 RNB)" class="cover">
-    <h1>MADEBYAI (2000 RNB)</h1>
-    <p class="track-meta">Артист: THEENDMIXTAPE | Продолжительность: 2:00 | Год: 2026</p>
+    <h1 id="track-title">MADEBYAI (2000 RNB)</h1>
+    <p class="track-meta">Артист: THEENDMIXTAPE | Продолжительность: 1:59 | Год: 2026</p>
+
     <audio controls class="audio-player" id="audio-player">
       <source src="audio/MADEBYAI (2000 RNB).mp3" type="audio/mpeg">
       Ваш браузер не поддерживает аудио.
     </audio>
+
+    <!-- Новая кнопка копирования -->
+    <button id="copy-title-btn" class="copy-title-btn" title="Скопировать название и артиста">Скопировать артиста и название трека📋</button>
+
     <a href="audio/MADEBYAI (2000 RNB).mp3" download="MADEBYAI (2000 RNB).mp3" class="download-btn">Скачать трек</a>
+
     <button id="share-btn" class="share-btn">Поделиться</button>
+
     <button id="show-lyrics-btn">Показать текст</button>
     <div id="lyrics-container" class="lyrics-container">
       <div class="lyrics">
@@ -73,6 +81,8 @@
       </div>
     </div>
   </div>
+
+  <!-- Модальное окно "Поделиться" -->
   <div id="share-modal" class="share-modal">
     <div class="share-modal-content">
       <h3>Поделиться треком</h3>
@@ -83,6 +93,7 @@
       <button id="close-share-modal" class="close-modal-btn">Закрыть</button>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
