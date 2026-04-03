@@ -7,8 +7,10 @@ const themeToggleBtn = document.getElementById('theme-toggle');
 const shareBtn = document.getElementById('share-btn');
 const shareModal = document.getElementById('share-modal');
 const closeShareModal = document.getElementById('close-share-modal');
-const sharePlatformButtons = document.querySelectorAll('.share-platform-btn'); // Теперь только 2 кнопки
+const sharePlatformButtons = document.querySelectorAll('.share-platform-btn');
 const coverImage = document.querySelector('.cover');
+const trackTitleElement = document.getElementById('track-title'); // Элемент заголовка
+const copyTitleBtn = document.getElementById('copy-title-btn'); // Новая кнопка
 
 // --- Логика для темы ---
 function applyTheme(themeName) {
@@ -33,26 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 themeToggleBtn.addEventListener('click', toggleTheme);
 
-// --- Логика для текста ---
+// --- Логика для текста (с анимацией) ---
 showLyricsBtn.addEventListener('click', () => {
-  if (lyricsContainer.style.display === 'none') {
-    lyricsContainer.style.display = 'block';
-    showLyricsBtn.textContent = 'Скрыть текст';
-    localStorage.setItem('lyricsVisible', 'true');
-  } else {
-    lyricsContainer.style.display = 'none';
-    showLyricsBtn.textContent = 'Показать текст';
-    localStorage.setItem('lyricsVisible', 'false');
-  }
+  lyricsContainer.classList.toggle('visible'); // Переключаем класс 'visible'
+  showLyricsBtn.textContent = lyricsContainer.classList.contains('visible') ? 'Скрыть текст' : 'Показать текст';
+  localStorage.setItem('lyricsVisible', lyricsContainer.classList.contains('visible')); // Сохраняем состояние
 });
 
 document.addEventListener('DOMContentLoaded', () => {
   const savedLyricsState = localStorage.getItem('lyricsVisible');
   if (savedLyricsState === 'true') {
-    lyricsContainer.style.display = 'block';
+    lyricsContainer.classList.add('visible'); // Добавляем класс 'visible'
     showLyricsBtn.textContent = 'Скрыть текст';
   } else {
-    lyricsContainer.style.display = 'none';
+    lyricsContainer.classList.remove('visible'); // Убираем класс 'visible'
     showLyricsBtn.textContent = 'Показать текст';
   }
 });
@@ -66,7 +62,7 @@ coverImage.addEventListener('click', () => {
   }
 });
 
-// --- Логика для кнопки "Поделиться" (открытие модального окна) ---
+// --- Логика для кнопки "Поделиться" ---
 shareBtn.addEventListener('click', () => {
   shareModal.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -89,9 +85,9 @@ shareModal.addEventListener('click', (e) => {
 sharePlatformButtons.forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-    const platform = btn.dataset.platform; // 'vk' или 'ok'
+    const platform = btn.dataset.platform;
     const url = encodeURIComponent(window.location.href);
-    const title = encodeURIComponent('Послушай трек MADEBYAI (JAZZ BOOM BAP)');
+    const title = encodeURIComponent('Послушай трек MADEBYAI (2000 RNB) by THEENDMIXTAPE');
     let link = '';
 
     switch (platform) {
@@ -101,11 +97,41 @@ sharePlatformButtons.forEach(btn => {
       case 'ok':
         link = `https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl=${url}&st.title=${title}`;
         break;
-      // 'bluesky' удалена из HTML и из JS
       default:
         return;
     }
 
     window.open(link, '_blank', 'noopener,noreferrer');
   });
+});
+
+// --- Логика для кнопки "Копировать название/артиста" ---
+copyTitleBtn.addEventListener('click', () => {
+  const title = trackTitleElement.textContent;
+  const artist = document.querySelector('.track-meta').textContent.match(/Артист:\s*(.*?)\s*\|/)?.[1] || 'Неизвестный артист'; // Извлечение артиста из метаданных
+  const textToCopy = `${title} by ${artist}`;
+
+  navigator.clipboard.writeText(textToCopy)
+    .then(() => {
+      // Визуальная обратная связь
+      copyTitleBtn.textContent = '✓'; // Временно меняем текст на галочку
+      copyTitleBtn.classList.add('success'); // Добавляем класс успеха
+
+      // Возвращаем исходное состояние через 1.5 секунды
+      setTimeout(() => {
+        copyTitleBtn.textContent = '📋'; // Возвращаем эмодзи
+        copyTitleBtn.classList.remove('success'); // Убираем класс успеха
+      }, 1500);
+    })
+    .catch(err => {
+      console.error('Ошибка копирования: ', err);
+      // Визуальная обратная связь при ошибке (опционально)
+      copyTitleBtn.textContent = '⚠'; // Временно меняем текст на восклицательный знак
+      copyTitleBtn.classList.add('success'); // Можно использовать тот же класс или другой
+
+      setTimeout(() => {
+        copyTitleBtn.textContent = '📋';
+        copyTitleBtn.classList.remove('success');
+      }, 1500);
+    });
 });
