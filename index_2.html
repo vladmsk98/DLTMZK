@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FEELRELAX</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle-btn">Сменить тему</button>
+
+  <!-- Добавлен блок навигации -->
+  <nav class="navigation">
+    <ul>
+      <li><a href="index.html" class="nav-link">FEELRELAX (JAZZ HIP-HOP)</a></li>
+      <li><a href="index_2.html" class="nav-link active">FEELRELAX (JAZZ HOUSE)</a></li>
+      <li><a href="index_3.html" class="nav-link">FEELRELAX (AMBIENT & CHILL)</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <img src="covers/FEELRELAX.jpg" alt="FEELRELAX" class="cover">
+    <h1 id="track-title">FEELRELAX (JAZZ HOUSE)</h1>
+    <p class="track-meta">Артист: FEELRELAX | Продолжительность: 3:23 | Год: 2025-2026</p>
+
+    <audio controls class="audio-player" id="audio-player">
+      <source src="audio/FEELRELAX (JAZZ HOUSE).mp3" type="audio/mpeg">
+      Ваш браузер не поддерживает аудио.
+    </audio>
+
+    <button id="copy-title-btn" class="copy-title-btn" title="Скопировать название и артиста">Скопировать артиста и название трека📋</button>
+
+    <a href="audio/FEELRELAX (JAZZ HOUSE).mp3" download="FEELRELAX (JAZZ HOUSE).mp3" class="download-btn">Скачать трек</a>
+
+    <button id="share-btn" class="share-btn">Поделиться</button>
+
+    <button id="show-lyrics-btn">Показать текст</button>
+    <div id="lyrics-container" class="lyrics-container">
+      <div class="lyrics">
+        <p><strong>[Вступление]</strong></p>
+        <p>Feel relax</p>
+        <p>Feel relax</p>
+        <p>Feel relax</p>
+        <p>Feel relax</p>
+
+        <p><strong>[Припев]</strong></p>
+        <p>Feel relax</p>
+        <p>Level is max</p>
+        <p>Music you feel named as chill</p>
+        <p>Music you feel named as chill</p>
+        <p>Feel relax</p>
+        <p>Level is max</p>
+        <p>Music you feel named as chill</p>
+        <p>Music you feel named as chill</p>
+
+        <p><strong>[Куплет]</strong></p>
+        <p>Sunset glow</p>
+        <p>Waves crash low</p>
+        <p>Headphones on</p>
+        <p>Let the world flow</p>
+        <p>No stress in the air</p>
+        <p>Just the rhythm’s embrace</p>
+        <p>This vibe’s a warm hug</p>
+        <p>A slow-motion space</p>
+
+        <p><strong>[Переход]</strong></p>
+        <p>Feel relax</p>
+        <p>Feel relax</p>
+        <p>Feel relax</p>
+        <p>Feel relax</p>
+
+        <p><strong>[Припев]</strong></p>
+        <p>Feel relax</p>
+        <p>Level is max</p>
+        <p>Music you feel named as chill</p>
+        <p>Music you feel named as chill</p>
+        <p>Feel relax</p>
+        <p>Level is max</p>
+        <p>Music you feel named as chill</p>
+        <p>Music you feel named as chill</p>
+
+        <p><strong>[Куплет]</strong></p>
+        <p>Heartbeat syncs</p>
+        <p>To the bassline’s grace</p>
+        <p>Every note lifts the weight</p>
+        <p>Erases the chase</p>
+        <p>Close your eyes</p>
+        <p>Let the sound ignite</p>
+        <p>A silent storm of calm</p>
+        <p>In the neon night</p>
+
+        <p><strong>[Переход]</strong></p>
+        <p>Feel relax</p>
+        <p>Feel relax</p>
+        <p>Feel relax</p>
+        <p>Feel relax</p>
+
+        <p><strong>[Припев]</strong></p>
+        <p>Feel relax</p>
+        <p>Level is max</p>
+        <p>Music you feel named as chill</p>
+        <p>Music you feel named as chill</p>
+        <p>Feel relax</p>
+        <p>Level is max</p>
+        <p>Music you feel named as chill</p>
+        <p>Music you feel named as chill</p>
+
+        <p><strong>[Припев]</strong></p>
+        <p>Feel relax</p>
+        <p>Level is max</p>
+        <p>Music you feel named as chill</p>
+        <p>Music you feel named as chill</p>
+        <p>Feel relax</p>
+        <p>Level is max</p>
+        <p>Music you feel named as chill</p>
+        <p>Music you feel named as chill</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="share-modal" class="share-modal">
+    <div class="share-modal-content">
+      <h3>Поделиться треком</h3>
+      <div class="share-platforms">
+        <a href="#" class="share-platform-btn" data-platform="vk">ВКонтакте</a>
+        <a href="#" class="share-platform-btn" data-platform="ok">Одноклассники</a>
+      </div>
+      <button id="close-share-modal" class="close-modal-btn">Закрыть</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
