@@ -3,27 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>КРИСТАЛГАЙЗ</title>
+  <title>EDR</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <img src="covers/GIVE LIFE BACK TO THIS MUSIC.jpg" alt="GIVE LIFE BACK TO THIS MUSIC COVER" class="cover">
-    <h1 id="track-title">GIVE LIFE BACK<br>TO THIS MUSIC</h1>
-    <p class="track-meta">Артист: КРИСТАЛГАЙЗ | Продолжительность: 3:45 | Год: 2026</p>
+    <img src="covers/EDR.jpg" alt="EDR COVER" class="cover">
+    <h1 id="track-title">EDR</h1>
+    <p class="track-meta">Артист: EDR | Продолжительность: 3:22 | Год: 2025-2026</p>
 
-    <audio controls class="audio-player" id="audio-player">
-      <source src="audio/GIVE LIFE BACK TO THIS MUSIC.mp3" type="audio/mpeg">
-      Ваш браузер не поддерживает аудио.
-    </audio>
-
-    <!-- === БЛОК КЕЙСА: ПРОМПТ + ПРОЦЕСС === -->
     <section class="case-study" aria-label="Описание кейса">
     <!-- 🔹 Промпт -->
       <div class="case-section">
-        <h3 class="case-title">🎯 Промпт</h3>
+        <h3 class="case-title">🎯 ВСТУПЛЕНИЕ 2025 (Промпт)</h3>
         <div class="prompt-box">
-          <code>Indie dance, 112 BPM, clean rhythm guitar, pulsing analog bass, crisp live drum kit, warm tape saturation, confident group vocal delivery with chant style backing harmonies</code>
+          <code>Brooding post-punk instrumental: throbbing bass, jagged guitars, driving drums, Reverb-drenched atmosphere builds to raw crescendo, Live grit captures dim venue energy</code>
+        </div>
+        <p class="case-note">Шаблон: [Жанр] + [Тема] + [Настроение] + [Темп] + [Детали]</p>
+      </div>
+    <!-- 🔹 Процесс -->
+      <div class="case-section">
+        <h3 class="case-title">⚙️ Процесс</h3>
+        <ol class="process-steps">
+          <li><strong>Генерация:</strong> 2 варианта в Suno AI v3.5, отбор по критерию «стабильный ритм»</li>
+          <li><strong>Пост-обработка:</strong> Audacity – нормализация (+2 dB), компрессор (мастер - глубокий дайвинг)</li>
+          <li><strong>Контроль:</strong> проверка на соответствие настроению</li>
+        </ol>
+      </div>
+    
+    <audio controls class="audio-player" id="audio-player">
+      <source src="audio/ВСТУПЛЕНИЕ 2025.mp3" type="audio/mpeg">
+      Ваш браузер не поддерживает аудио.
+    </audio>
+
+    <section class="case-study" aria-label="Описание кейса">
+    <!-- 🔹 Промпт -->
+      <div class="case-section">
+        <h3 class="case-title">🎯 ВСТУПЛЕНИЕ 2026 (Промпт)</h3>
+        <div class="prompt-box">
+          <code>Stadium post-punk instrumental: atmospheric clean electric guitars with heavy reverb and delay, melodic bassline, slow-building powerful drums, no vocals, no synths, no distortion, Dark, expansive, and cinematic mood</code>
         </div>
         <p class="case-note">Шаблон: [Жанр] + [Тема] + [Настроение] + [Темп] + [Детали]</p>
       </div>
@@ -46,6 +64,11 @@
         </ul>
       </div>
     </section>
+
+    <audio controls class="audio-player" id="audio-player">
+      <source src="audio/ВСТУПЛЕНИЕ 2026.mp3" type="audio/mpeg">
+      Ваш браузер не поддерживает аудио.
+    </audio>
   </div>
 </body>
 </html>
