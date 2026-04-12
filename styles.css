@@ -1,25 +1,20 @@
 /* ==================================================
-   EDR — минималистичный архитектурный микс
-   Стиль: чёрно-белый, индустриальный, геометрический
-   Цель: UI-дружелюбность + соответствие обложке (без неона, с текстурой)
-   Поддержка: современные браузеры, WCAG AA (контраст ≥ 4.5:1)
+   TEM2 — Release Card (Oceanic Minimalism)
+   Цель: чистая информация по релизу
+   Поддержка: WCAG AA, адаптивность, доступность
    ================================================== */
 
-/* === Переменные === */
 :root {
-  /* Серая гамма — как бетон и небо */
-  --bg-dark: #121212;        /* фон */
-  --bg-mid: #2a2a2a;         /* кард */
-  --text-primary: #e8ecef;   /* основной текст */
-  --text-secondary: #a0a8b3; /* метаданные, подсказки */
-  --border-light: rgba(232, 236, 239, 0.15);
-  --border-strong: rgba(232, 236, 239, 0.3);
+  /* Морская палитра */
+  --ocean-dark: #0a141d;      /* фон */
+  --ocean-mid: #0c1a25;       /* кард */
+  --foam-light: #f0f6fb;      /* основной текст */
+  --wave-gray: #c0d0e0;       /* метаданные */
+  --border-strong: rgba(240, 246, 251, 0.25);
 
-  /* Шрифт — геометрический, чёткий */
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
 
-/* === Сброс и база === */
 * {
   margin: 0;
   padding: 0;
@@ -27,169 +22,90 @@
 }
 
 body {
-  background: var(--bg-dark);
-  color: var(--text-primary);
+  background: var(--ocean-dark);
+  color: var(--foam-light);
   font-family: var(--font-main);
   min-height: 100vh;
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* Лёгкая текстура воды */
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(240, 246, 251, 0.02) 0%, transparent 30%),
+    radial-gradient(circle at 85% 75%, rgba(240, 246, 251, 0.015) 0%, transparent 35%);
 }
 
-/* === Основной контейнер === */
-.container {
-  max-width: 500px;
+.release-card {
+  max-width: 460px;
   width: 100%;
-  background: var(--bg-mid);
+  background: rgba(12, 26, 37, 0.85);
   backdrop-filter: blur(10px);
-  border-radius: 14px;
-  padding: 32px 24px;
+  border-radius: 16px;
+  padding: 30px 24px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6), inset 0 0 12px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 0 24px rgba(0, 30, 50, 0.6),
+    inset 0 0 14px rgba(0, 0, 0, 0.7);
   border: 1px solid var(--border-strong);
 }
 
-/* === Обложка === */
 .cover {
   width: 100%;
   max-width: 400px;
-  border-radius: 10px;
-  margin: 0 auto 24px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  display: block;
+  border-radius: 12px;
+  margin: 0 auto 22px;
+  box-shadow: 0 0 22px rgba(0, 30, 50, 0.5);
 }
 
-/* === Заголовок — "EDR" в стиле обложки === */
 .track-title {
-  font-size: 2.6rem;
+  font-size: 2.7rem;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 2.1px;
   text-transform: uppercase;
-  margin: 0 0 12px;
-  color: var(--text-primary);
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.8);
-  /* Рваный эффект через overlay — без SVG для простоты */
+  margin: 0 0 10px;
+  color: var(--foam-light);
+  -webkit-text-stroke: 1.4px rgba(10, 20, 29, 0.85);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
 }
 
-.track-title::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: 
-    radial-gradient(circle at 20% 30%, transparent 0%, rgba(0,0,0,0.15) 70%),
-    radial-gradient(circle at 80% 70%, transparent 0%, rgba(0,0,0,0.1) 70%);
-  opacity: 0.7;
-  pointer-events: none;
-  border-radius: inherit;
-  z-index: -1;
-}
-
-/* === Метаданные === */
 .track-meta {
-  font-size: 1rem;
-  opacity: 0.85;
-  color: var(--text-secondary);
-  margin: 0 0 28px;
-  line-height: 1.6;
+  font-size: 0.98rem;
+  opacity: 0.88;
+  color: var(--wave-gray);
+  margin: 0 0 24px;
+  line-height: 1.55;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* === Аудиоплеер — минималистичный, но выделенный === */
 .audio-player {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  background: rgba(20, 24, 30, 0.9);
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 0 14px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.7);
-  border: 1px solid var(--border-strong);
-  position: relative;
-}
-
-.audio-player::before {
-  content: "";
-  position: absolute;
-  top: -2px; left: -2px; right: -2px; bottom: -2px;
-  background: linear-gradient(45deg, rgba(232, 236, 239, 0.1), rgba(160, 168, 179, 0.1));
-  z-index: -1;
+  background: rgba(8, 18, 28, 0.92);
   border-radius: 14px;
-  filter: blur(4px);
-  opacity: 0.6;
-}
-
-/* === Блок кейса — архитектурный стиль === */
-.case-study {
-  margin-top: 36px;
-  padding-top: 28px;
-  border-top: 1px solid var(--border-light);
-  text-align: left;
-}
-
-.case-section { margin-bottom: 24px; }
-
-.case-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 0 0 14px;
-  color: var(--text-primary);
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.case-title::before {
-  content: "";
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  background: var(--text-secondary);
-  border-radius: 2px;
-  opacity: 0.7;
-}
-
-.prompt-box {
-  background: rgba(18, 22, 30, 0.85);
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
   padding: 16px;
-  font-family: 'Courier New', monospace;
-  font-size: 0.9rem;
-  color: var(--text-primary);
-  margin-bottom: 12px;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
-  white-space: pre-wrap;
+  box-shadow:
+    0 0 16px rgba(0, 30, 50, 0.5),
+    inset 0 0 12px rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--border-strong);
 }
 
-.case-note {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  opacity: 0.75;
-}
-
-.process-steps, .result-list {
-  padding-left: 24px;
-  margin: 0;
-  color: var(--text-primary);
-  line-height: 1.7;
-}
-
-.process-steps li, .result-list li { margin-bottom: 10px; }
-
-.process-steps strong { color: var(--text-primary); font-weight: 600; }
-
-.result-list li::before {
-  content: "— ";
-  color: var(--text-secondary);
-  font-weight: bold;
-  margin-right: 8px;
-}
-
-/* === Адаптивность === */
+/* Адаптивность */
 @media (max-width: 600px) {
-  .container { padding: 24px 16px; }
-  .track-title { font-size: 2.0rem; }
-  .case-title { font-size: 1.1rem; }
-  .prompt-box { padding: 12px; font-size: 0.85rem; }
+  .release-card {
+    padding: 26px 18px;
+  }
+  .track-title {
+    font-size: 2.1rem;
+    letter-spacing: 1.8px;
+  }
+  .track-meta {
+    font-size: 0.92rem;
+  }
+  .cover {
+    margin-bottom: 18px;
+  }
 }
