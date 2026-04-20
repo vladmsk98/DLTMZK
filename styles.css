@@ -284,6 +284,13 @@ body {
   background: rgba(255, 128, 0, 0.3);
 }
 
+.bsky-btn {
+  background: rgba(0, 153, 255, 0.2); /* Синий цвет BlueSky */
+}
+.bsky-btn:hover {
+  background: rgba(0, 153, 255, 0.3);
+}
+
 /* Адаптивность */
 @media (max-width: 600px) {
   .release-card {
