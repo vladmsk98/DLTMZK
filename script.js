@@ -1,9 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Получаем текущий URL
+  // Получаем текущий URL и заголовок страницы
   const currentUrl = window.location.href;
-  const pageTitle = document.title || "TEM2 — СПЛЕТЕНИЯ";
+  const pageTitle = document.title || "DLTMZK — СПЛЕТЕНИЯ";
 
-  // Кнопка "Копировать ссылку"
+  // === Функционал: остановка других треков при воспроизведении одного ===
+  const allAudioPlayers = document.querySelectorAll('.audio-player');
+
+  allAudioPlayers.forEach(player => {
+    player.addEventListener('play', () => {
+      // Останавливаем все остальные плееры
+      allAudioPlayers.forEach(otherPlayer => {
+        if (otherPlayer !== player && !otherPlayer.paused) {
+          otherPlayer.pause();
+        }
+      });
+    });
+  });
+
+  // === Кнопка "Копировать ссылку" ===
   document.getElementById("copy-url-btn").addEventListener("click", () => {
     navigator.clipboard.writeText(currentUrl).then(() => {
       alert("Ссылка скопирована в буфер обмена!");
@@ -13,15 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Кнопка "Поделиться ВКонтакте"
+  // === Поделка: ВКонтакте ===
   const vkShareUrl = `https://vk.com/share.php?url=${encodeURIComponent(currentUrl)}&title=${encodeURIComponent(pageTitle)}`;
   document.getElementById("vk-share-btn").href = vkShareUrl;
 
-  // Кнопка "Поделиться в Одноклассники"
+  // === Поделка: Одноклассники ===
   const okShareUrl = `https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl=${encodeURIComponent(currentUrl)}&st.title=${encodeURIComponent(pageTitle)}`;
   document.getElementById("ok-share-btn").href = okShareUrl;
 
-  // Кнопка "Поделиться в BlueSky"
+  // === Поделка: BlueSky ===
   const bskyShareUrl = `https://bsky.app/intent/compose?text=${encodeURIComponent(pageTitle + ' ' + currentUrl)}`;
   document.getElementById("bsky-share-btn").href = bskyShareUrl;
 });
