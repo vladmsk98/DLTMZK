@@ -17,25 +17,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === Кнопка "Копировать ссылку" ===
-  document.getElementById("copy-url-btn").addEventListener("click", () => {
-    navigator.clipboard.writeText(currentUrl).then(() => {
-      alert("Ссылка скопирована в буфер обмена!");
-    }).catch(err => {
-      console.error("Ошибка копирования:", err);
-      alert("Не удалось скопировать ссылку.");
-    });
-  });
+  // === Функция для настройки поделки и копирования ссылки ===
+  function setupSharingForTrack(suffix) {
+    // Кнопка "Копировать ссылку"
+    const copyBtn = document.getElementById(`copy-url-btn-${suffix}`);
+    if (copyBtn) {
+      copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(currentUrl).then(() => {
+          alert("Ссылка скопирована в буфер обмена!");
+        }).catch(err => {
+          console.error("Ошибка копирования:", err);
+          alert("Не удалось скопировать ссылку.");
+        });
+      });
+    }
 
-  // === Поделка: ВКонтакте ===
-  const vkShareUrl = `https://vk.com/share.php?url=${encodeURIComponent(currentUrl)}&title=${encodeURIComponent(pageTitle)}`;
-  document.getElementById("vk-share-btn").href = vkShareUrl;
+    // Поделиться: ВКонтакте
+    const vkBtn = document.getElementById(`vk-share-btn-${suffix}`);
+    if (vkBtn) {
+      const vkShareUrl = `https://vk.com/share.php?url=${encodeURIComponent(currentUrl)}&title=${encodeURIComponent(pageTitle)}`;
+      vkBtn.href = vkShareUrl;
+    }
 
-  // === Поделка: Одноклассники ===
-  const okShareUrl = `https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl=${encodeURIComponent(currentUrl)}&st.title=${encodeURIComponent(pageTitle)}`;
-  document.getElementById("ok-share-btn").href = okShareUrl;
+    // Поделиться: Одноклассники
+    const okBtn = document.getElementById(`ok-share-btn-${suffix}`);
+    if (okBtn) {
+      const okShareUrl = `https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl=${encodeURIComponent(currentUrl)}&st.title=${encodeURIComponent(pageTitle)}`;
+      okBtn.href = okShareUrl;
+    }
 
-  // === Поделка: BlueSky ===
-  const bskyShareUrl = `https://bsky.app/intent/compose?text=${encodeURIComponent(pageTitle + ' ' + currentUrl)}`;
-  document.getElementById("bsky-share-btn").href = bskyShareUrl;
+    // Поделиться: BlueSky
+    const bskyBtn = document.getElementById(`bsky-share-btn-${suffix}`);
+    if (bskyBtn) {
+      const bskyShareUrl = `https://bsky.app/intent/compose?text=${encodeURIComponent(pageTitle + ' ' + currentUrl)}`;
+      bskyBtn.href = bskyShareUrl;
+    }
+  }
+
+  // Настройка для обоих треков
+  setupSharingForTrack('track1');
+  setupSharingForTrack('track2');
 });
