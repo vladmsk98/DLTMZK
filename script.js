@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // === 2. Настройка кнопок поделки (VK, OK) для обоих треков ===
-  function setupSharingForTrack(suffix) {
+  function setupSharingForTrack(suffix) { // suffix теперь может быть 'track1' или 'track2'
     const copyBtn = document.getElementById(`copy-url-btn-${suffix}`);
     const vkBtn = document.getElementById(`vk-share-btn-${suffix}`);
     const okBtn = document.getElementById(`ok-share-btn-${suffix}`);
 
-    if (copyBtn) {
+    if (copyBtn) { // Проверка на существование элемента перед добавлением обработчика
       copyBtn.addEventListener("click", () => {
         navigator.clipboard.writeText(currentUrl).then(() => {
           alert("Ссылка скопирована в буфер обмена!");
@@ -45,44 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   setupSharingForTrack('track1');
-  setupSharingForTrack('track2');
-
-  // === 3. Система оценки треков (звезды) ===
-  document.querySelectorAll('.rating-section').forEach(section => {
-    const stars = section.querySelectorAll('.star');
-    const trackId = section.getAttribute('data-track');
-    const ratingDisplay = section.querySelector('.rating-display span');
-
-    // Загружаем сохранённую оценку
-    const savedRating = localStorage.getItem(`rating-track${trackId}`);
-    if (savedRating) {
-      updateStars(parseInt(savedRating));
-      ratingDisplay.textContent = savedRating;
-    }
-
-    stars.forEach(star => {
-      star.addEventListener('click', () => {
-        const value = parseInt(star.getAttribute('data-value'));
-
-        // Сохраняем оценку
-        localStorage.setItem(`rating-track${trackId}`, value);
-
-        // Обновляем отображение
-        updateStars(value);
-        ratingDisplay.textContent = value;
-      });
-    });
-
-    function updateStars(rating) {
-      stars.forEach((star, index) => {
-        if (index < rating) {
-          star.classList.add('active');
-        } else {
-          star.classList.remove('active');
-        }
-      });
-    }
-  });
+  setupSharingForTrack('track2'); // Вызов для второго трека
 
   // === 4. Кнопка "Вернуться к началу" ===
   const backToTopBtn = document.getElementById('back-to-top');
@@ -101,28 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // === 5. A/B-тест: "Какой трек вам ближе?" ===
-  const abPrompt = document.querySelector('.ab-test-prompt');
-  if (abPrompt) {
-    const choices = abPrompt.querySelectorAll('.ab-choice');
+  // === 3. Система оценки треков (звезды) и 5. A/B-тест - УДАЛЕНЫ ===
+  // Логика, связанная с .rating-section, .star, .ab-test-prompt, .ab-choice и т.д., удалена,
+  // так как соответствующие элементы отсутствуют в текущем HTML.
 
-    choices.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const choice = btn.dataset.choice; // 'ai' или 'human'
-
-        // Сохраняем выбор один раз (если ещё не был сделан)
-        if (!localStorage.getItem('ab-test-result')) {
-          localStorage.setItem('ab-test-result', choice);
-
-          // Заменяем блок на результат
-          abPrompt.innerHTML = `
-            <p>Спасибо за ваш выбор!</p>
-            <div class="ab-result">
-              <strong>${choice === 'ai' ? 'СПЛЕТЕНИЯ' : 'ТОЛЬКОБИТ'}</strong> — ваша рекомендация.
-            </div>
-          `;
-        }
-      });
-    });
-  }
 });
