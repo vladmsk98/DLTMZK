@@ -8,53 +8,63 @@
 </head>
 <body>
   <div class="release-card">
-    <div class="track-item human-track"></div>
-    <img src="image/BANNER.png" alt="DRCDLX BANNER" class="cover">
-    <img src="covers/DRCDLX.jpg" alt="DRCDLX COVER" class="cover">
-    <h1 class="track-title">ТОЛЬКОБИТ</h1>
-    <p class="track-meta">
-      Артист: <span class="meta-highlight">DRCDLX</span> |
-      Жанр: <span class="meta-highlight">Dark Indie Rock</span> <br>
-      Продолжительность: <span class="meta-highlight">2:12</span> |
-      Год: <span class="meta-highlight">2026</span>
-    </p>
-    <audio controls class="audio-player">
-      <source src="audio/ТОЛЬКОБИТ.flac" type="audio/flac">
-      Ваш браузер не поддерживает аудио.
-    </audio>
-    <details class="download-options">
-      <summary>💾 Скачать</summary>
-      <ul class="format-list">
-        <li><a href="audio/ТОЛЬКОБИТ.flac" download>FLAC (Lossless)</a></li>
-      </ul>
-    </details>
-    <div class="sharing-actions">
-      <button id="copy-url-btn-track1" class="share-btn copy-btn">🔗 Копировать ссылку</button>
-      <a href="#" id="vk-share-btn-track1" class="share-btn vk-btn" target="_blank" rel="noopener noreferrer">Поделиться в ВК</a>
-      <a href="#" id="ok-share-btn-track1" class="share-btn ok-btn" target="_blank" rel="noopener noreferrer">Поделиться в ОК</a>
+    <div class="filter-controls">
+      <button class="filter-btn active" data-filter="all">Все треки</button>
+      <button class="filter-btn" data-filter="solo">Сольные</button>
+      <button class="filter-btn" data-filter="collab">Совместные</button>
+    </div>
+    <div class="track-wrapper" data-type="solo">
+      <div class="track-item human-track"></div>
+      <img src="image/BANNER.png" alt="DRCDLX BANNER" class="cover">
+      <img src="covers/DRCDLX.jpg" alt="DRCDLX COVER" class="cover">
+      <div class="track-separator"></div>
+      <h1 class="track-title">ТОЛЬКОБИТ</h1>
+      <p class="track-meta">
+        Артист: <span class="meta-highlight">DRCDLX</span> |
+        Жанр: <span class="meta-highlight">Dark Indie Rock</span> <br>
+        Продолжительность: <span class="meta-highlight">2:12</span> |
+        Год: <span class="meta-highlight">2026</span>
+      </p>
+      <audio controls class="audio-player">
+        <source src="audio/ТОЛЬКОБИТ.flac" type="audio/flac">
+        Ваш браузер не поддерживает аудио.
+      </audio>
+      <details class="download-options">
+        <summary>💾 Скачать</summary>
+        <ul class="format-list">
+          <li><a href="audio/ТОЛЬКОБИТ.flac" download>FLAC (Lossless)</a></li>
+        </ul>
+      </details>
+      <div class="sharing-actions">
+        <button id="copy-url-btn-track1" class="share-btn copy-btn">🔗 Копировать ссылку</button>
+        <a href="#" id="vk-share-btn-track1" class="share-btn vk-btn" target="_blank" rel="noopener noreferrer">Поделиться в ВК</a>
+        <a href="#" id="ok-share-btn-track1" class="share-btn ok-btn" target="_blank" rel="noopener noreferrer">Поделиться в ОК</a>
+      </div>
     </div>
     <div class="track-separator"></div>
-    <h1 class="track-title">АБСОЛЮТНОЕ<br>НИЧЕГО</h1>
-    <p class="track-meta">
-      Артист: <span class="meta-highlight">DRCDLX, K1LLST4R</span> |
-      Жанр: <span class="meta-highlight">Dark Indie Rock</span> <br>
-      Продолжительность: <span class="meta-highlight">2:04</span> |
-      Год: <span class="meta-highlight">2026</span>
-    </p>
-    <audio controls class="audio-player">
-      <source src="audio/АБСОЛЮТНОЕНИЧЕГО.flac" type="audio/flac">
-      Ваш браузер не поддерживает аудио.
-    </audio>
-    <details class="download-options">
-      <summary>💾 Скачать</summary>
-      <ul class="format-list">
-        <li><a href="audio/АБСОЛЮТНОЕНИЧЕГО.flac" download>FLAC (Lossless)</a></li>
-      </ul>
-    </details>
-    <div class="sharing-actions">
-      <button id="copy-url-btn-track2" class="share-btn copy-btn">🔗 Копировать ссылку</button>
-      <a href="#" id="vk-share-btn-track2" class="share-btn vk-btn" target="_blank" rel="noopener noreferrer">Поделиться в ВК</a>
-      <a href="#" id="ok-share-btn-track2" class="share-btn ok-btn" target="_blank" rel="noopener noreferrer">Поделиться в ОК</a>
+    <div class="track-wrapper" data-type="collab">
+      <h1 class="track-title">АБСОЛЮТНОЕ<br>НИЧЕГО</h1>
+      <p class="track-meta">
+        Артист: <span class="meta-highlight">DRCDLX, K1LLST4R</span> |
+        Жанр: <span class="meta-highlight">Dark Indie Rock</span> <br>
+        Продолжительность: <span class="meta-highlight">2:04</span> |
+        Год: <span class="meta-highlight">2026</span>
+      </p>
+      <audio controls class="audio-player">
+        <source src="audio/АБСОЛЮТНОЕНИЧЕГО.flac" type="audio/flac">
+        Ваш браузер не поддерживает аудио.
+      </audio>
+      <details class="download-options">
+        <summary>💾 Скачать</summary>
+        <ul class="format-list">
+          <li><a href="audio/АБСОЛЮТНОЕНИЧЕГО.flac" download>FLAC (Lossless)</a></li>
+        </ul>
+      </details>
+      <div class="sharing-actions">
+        <button id="copy-url-btn-track2" class="share-btn copy-btn">🔗 Копировать ссылку</button>
+        <a href="#" id="vk-share-btn-track2" class="share-btn vk-btn" target="_blank" rel="noopener noreferrer">Поделиться в ВК</a>
+        <a href="#" id="ok-share-btn-track2" class="share-btn ok-btn" target="_blank" rel="noopener noreferrer">Поделиться в ОК</a>
+      </div>
     </div>
   </div>
   <a href="#" id="back-to-top" class="back-to-top-btn">↑</a>
