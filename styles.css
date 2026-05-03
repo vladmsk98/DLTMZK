@@ -298,6 +298,42 @@ body {
     inset 0 0 8px rgba(0, 0, 0, 0.7);
 }
 
+/* Стили для элементов управления фильтром */
+.filter-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Расстояние между кнопками */
+  margin-bottom: 20px; /* Отступ снизу от фильтров до следующего элемента */
+  flex-wrap: wrap; /* Кнопки могут переноситься на новую строку на узких экранах */
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border-radius: 20px; /* Скругленные углы для кнопок */
+  border: 1px solid var(--border-soft);
+  background: rgba(234, 234, 234, 0.06); /* Фон по умолчанию */
+  color: var(--stone-gray); /* Цвет текста по умолчанию */
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  transition: all 0.2s ease; /* Плавный переход для hover и active */
+}
+
+.filter-btn:hover {
+  background: rgba(234, 234, 234, 0.12); /* Фон при наведении */
+  color: var(--snow-light); /* Цвет текста при наведении */
+}
+
+.filter-btn.active {
+  background: var(--sun-gold); /* Фон активной кнопки */
+  color: var(--rock-dark); /* Цвет текста активной кнопки */
+  border-color: var(--sun-gold); /* Цвет границы активной кнопки */
+}
+
+/* Правило для скрытия треков */
+.track-wrapper.hidden {
+  display: none;
+}
 
 /* Адаптивность */
 @media (max-width: 600px) {
@@ -314,5 +350,12 @@ body {
   .cover {
     margin-bottom: 18px;
   }
-  /* Убрано: .comparison-values, .value - не используются */
+  .filter-controls {
+    gap: 8px; /* Уменьшенный отступ на мобильных */
+    margin-bottom: 16px; /* Уменьшенный отступ */
+  }
+  .filter-btn {
+    padding: 6px 12px; /* Уменьшенный паддинг на мобильных */
+    font-size: 0.85rem; /* Уменьшенный размер шрифта */
+  }
 }
